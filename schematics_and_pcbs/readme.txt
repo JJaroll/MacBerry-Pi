@@ -1,31 +1,31 @@
 
-These are the KiCAD project files for this project.
+Estos son los archivos de proyecto de KiCad para este proyecto.
 
-===Main boards===
+===Placas principales===
 
 -imac_g3_333mhz_slot_loading_J20_adapter_board
-	This board is the "brains" of the operation, it sends the init sequence
-	to the IVAD board and also sends EDID information to any device that
-	requests it when conencted to the VGA port.
+	Esta placa es el "cerebro" de la operación, envía la secuencia de inicialización
+	a la placa IVAD y también envía la información EDID a cualquier dispositivo que
+	la solicite al conectarse al puerto VGA.
  
 -imac_g3_down_converter_board_adapter
-	This board takes 24VAC from the analog board via the the J22 board and
-	converts it to standard computer power supply voltages. +12VDC, +5VDC
-	and +3.3VDC. This board also has a footprint to include a connector
-	to connect a CPU fan.
+	Esta placa toma 24VAC de la placa analógica a través de la placa J22 y
+	los convierte a voltajes estándar de fuente de alimentación de computadora: +12VDC, +5VDC
+	y +3.3VDC. Esta placa también tiene una huella para incluir un conector
+	para conectar un ventilador de CPU.
 	
 -imac_g3_slot_loading_J22_adapter_board
-	This board is essentially a breakout board that allows one to use the 
-	built in speakers, power switch, leds and 24VAC.
+	Esta placa es esencialmente una placa adaptadora que permite utilizar los 
+	altavoces integrados, el interruptor de encendido, los LEDs y los 24VAC.
 
 -surfacemount_version	
-	This will be a surface mount version of the original main boards.
-	It is currently under development. The idea is to have boards
-	that can be assembled by an assembly outfit to bring down the cost.
+	Esta será una versión de montaje superficial (SMD) de las placas principales originales.
+	Actualmente está en desarrollo. La idea es tener placas
+	que puedan ser ensambladas por un servicio de montaje para reducir los costes.
 	
-===User contributed boards==
+===Placas aportadas por usuarios===
 
 -RPiG3iMac	
-	Additional KiCAD projects for a Raspberry Pi Hat and a breakout board
-	for the J20 board. These boards were contributed by Rudy https://reng.ca
-	, look inside the directory for more details. 
+	Proyectos adicionales de KiCad para un HAT de Raspberry Pi y una placa adaptadora
+	para la placa J20. Estas placas fueron aportadas por Rudy https://reng.ca
+	, consulta el directorio para más detalles. 

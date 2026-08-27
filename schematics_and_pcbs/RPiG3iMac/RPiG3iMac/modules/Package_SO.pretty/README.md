@@ -1,3 +1,3 @@
 # Package_SO.pretty
 
-This repository contains various Small Outline Integrated Circuit (SOIC, SSOP, xSOP) footprints - https://en.wikipedia.org/wiki/Small_Outline_Integrated_Circuit
+Este repositorio contiene varias huellas (footprints) de circuitos integrados de contorno reducido (Small Outline: SOIC, SSOP, xSOP) - https://en.wikipedia.org/wiki/Small_Outline_Integrated_Circuit

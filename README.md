@@ -1,252 +1,231 @@
-# Add custom boards to an iMac G3 DV(slot loader) in order to use it as a monitor without having to destroy it.
+# Añadir placas personalizadas a un iMac G3 DV (slot loading) para usarlo como monitor sin tener que destruirlo.
 
 
-See the wiki for an explantion of how this was done.<BR>
+Consulta la wiki para ver una explicación de cómo se hizo esto.<BR>
 
-<H2>Wiki explaining how this was done.</H2>
+<H2>Wiki que explica cómo se hizo esto.</H2>
  
-- [Wiki explaining how this was done.](https://github.com/qbancoffee/imac_g3_ivad_board_init/wiki)
+- [Wiki que explica cómo se hizo esto.](https://github.com/qbancoffee/imac_g3_ivad_board_init/wiki)
 
-If you have a dead logic board but a functioning CRT then these boards can let you use your
-iMac G3 DV as a VGA monitor so that you can use a modern desktop with it. You can even hand wire the 
-whole thing without the need for the boards if you so wish.
+Si tienes una placa base (logic board) dañada pero un tubo CRT funcional, estas placas te permitirán usar tu iMac G3 DV como monitor VGA para que puedas utilizarlo con una computadora de escritorio moderna. Incluso puedes cablear todo a mano sin necesidad de las placas si así lo deseas.
 
-Even if you have a perfectly functional iMac G3 DV you can remove your logic board and use these boards
-to convert your iMac G3 DV into a VGA monitor without harming your iMac G3 and when you want your iMac back, you can remove the custom boards and plug your original logic board back in and still use your iMac G3 as an original apple product.
-These boards are designed to plug right in without having to modify the case and attached things.
+Incluso si tienes un iMac G3 DV perfectamente funcional, puedes retirar tu placa base y usar estas placas para convertir tu iMac G3 DV en un monitor VGA sin dañar tu iMac G3; y cuando quieras recuperar tu iMac, puedes retirar las placas personalizadas y volver a conectar tu placa base original para seguir utilizando tu iMac G3 como un producto Apple original.
+Estas placas están diseñadas para conectarse directamente sin tener que modificar la carcasa ni los componentes acoplados.
 
-However....
+Sin embargo....
 
-# --->DO THIS AT YOUR OWN RISK<--- as things may break as you dissasemble your iMac and you can get shocked.
+# --->HAZ ESTO BAJO TU PROPIO RIESGO<--- ya que los componentes pueden romperse al desmontar tu iMac y puedes recibir una descarga eléctrica.
 
-Although low risk, things can always go wrong, so be careful.
+Aunque el riesgo es bajo, las cosas siempre pueden salir mal, así que ten cuidado.
 
-- The inner bezel is extremely fragile and routintely breaks.
-- The CRT can hold a charge and shock you even if the iMac is not plugged in.
-- Static discharge from your hands can destroy electronics so "GROUND THYSELF"
+- El bisel interior es extremadamente frágil y suele romperse con facilidad.
+- El CRT puede retener carga eléctrica y darte una descarga incluso si el iMac está desenchufado.
+- La descarga estática de tus manos puede destruir componentes electrónicos, así que "CONÉCTATE A TIERRA".
 
- I've documented much of the iMac G3 slot loader chasis connector pinouts on this repo and used 
- it as a guide to make breakout circuit boards than can plug right into the chassis connectors and provide
- standard connections so that a regular computer can use things like the CRT,speakers, power button, audio
- jacks, the down-converter board ect..
+ He documentado gran parte del patillaje (pinouts) de los conectores del chasis del iMac G3 slot loader en este repositorio y lo usé como guía para crear placas de circuito adaptadoras (breakout boards) que se conectan directamente a los conectores del chasis y proporcionan conexiones estándar para que una computadora normal pueda usar elementos como el CRT, altavoces, botón de encendido, conectores de audio, la placa reductora (down-converter), etc.
  
- It wasn't easy but luckily a lot of people have shared their findings online..
+ No fue fácil, pero afortunadamente muchas personas han compartido sus hallazgos en línea...
  
- There is working code here for both the arduino and raspberry pi to initialize the IVAD board so that you can use it as a monitor.
+ Hay código funcional aquí tanto para Arduino como para Raspberry Pi para inicializar la placa IVAD de modo que puedas usarla como monitor.
  
-The current initialization sketch waits for button presses on an arduino pin to send the initialization sequence
-to the IVAD board but you can just uncomment "initIvadBoard();" in "setup()" to send it as soon as it's powered.
+El sketch de inicialización actual espera a que se presione un botón en un pin de Arduino para enviar la secuencia de inicialización a la placa IVAD, pero puedes simplemente descomentar "initIvadBoard();" en "setup()" para enviarla tan pronto como reciba alimentación.
 
 </br>
 
-Also, you might have to modify values in the init sequence to get the brightness, contrast and screen geometry
-just right for your setup. below is an example from the init sketch.
+Además, es posible que tengas que modificar los valores en la secuencia de inicialización para obtener el brillo, contraste y geometría de pantalla adecuados para tu configuración. A continuación se muestra un ejemplo del sketch de inicialización.
 
 
+```c
+  writeToIvad( 0x46, 0x04, 0x80); //rojo x-30
+  writeToIvad( 0x46, 0x05, 0xB0); //verde x
+  writeToIvad( 0x46, 0x06, 0x78); //azul x-38
+
+  writeToIvad( 0x46, 0x07, 0xB1); //posición horizontal
+  writeToIvad( 0x46, 0x08, 0xF8); //tamaño vertical
 ```
-  writeToIvad( 0x46, 0x04, 0x80);//red x-30
-  writeToIvad( 0x46, 0x05, 0xB0);// green x
-  writeToIvad( 0x46, 0x06, 0x78); //blue x-38
-
-  writeToIvad( 0x46, 0x07, 0xB1); //horizontal position
-  writeToIvad( 0x46, 0x08, 0xF8); //vertical size
-  ```
 
 
 <!-- toc -->
-- [Success stories](#Success-Stories)
-- [Goals](#Goals)
-- [Chassis Connectors and Pinouts](#Chassis-Connectors-and-Pinouts)
-    * [Removing the logic board](#Removing-the-logic-board)
-- [Wiring VGA cable](#Wiring-VGA-cable)
-    * [Making the cable](#Making-the-cable)
-- [Preparing the Raspberry Pi](#Preparing-the-Raspberry-Pi)
-    * [What to install](#What-to-install)
-    * [Configure Resolution and Refresh Rate](#Configure-Resolution-and-Refresh-Rate)
--   * [Wiring The Raspberry Pi and testing the connection](#Wiring-The-Raspberry-Pi-and-testing-the-connection)
-- [Wiring Arduino Uno](#Wiring-Arduino-Uno)
-- [Wiring Arduino Nano](#Wiring-Arduino-Nano)
-    * [Loading and Running the initialization sketch](#Loading-and-Running-the-initialization-sketch)
-- [Wiring Arduino Uno to transmit EDID](#Wiring-Arduino-Uno-to-transmit-EDID)
-- [Wiring Arduino Nano to transmit EDID](#Wiring-Arduino-Nano-to-transmit-EDID)
-- [Powering the down converter board PAV](#Powering-the-down-converter-board-PAV)
-- [Powering the CRT on and off](#Powering-the-CRT-on-and-off)
-- [See Also](#See-Also)
-   * [See the boards](#Boards)
-   * [Getting adapter boards](#Ordering-Boards)
-   * [Acknowledgements](#Acknowledgements)
-   * [Videos](#Videos)
-## Success Stories
-- [Apple IIe using the iMac G3 as a monitor](https://www.reddit.com/r/VintageApple/comments/fox7b8/my_half_retro_battle_station/)
-- [Apple IIe using the iMac G3 as a monitor 2 ](https://old.reddit.com/r/VintageApple/comments/fmoi5d/slot_loading_imac_g3_vga_input_hack/)
-- [oshimai running windows on a pc104 computer](https://vimeo.com/415301897)
-- [oshimais' repo with links to videos](https://github.com/shuuryou/imacg3)
-- [A Nintendo Switch connected to an iMac G3](https://www.reddit.com/r/crtgaming/comments/k3hf02/imac_g3_crt_connected_to_switch/)
-- [Check out the iMacSTer repo by wikerwaka it's impressive!](https://github.com/wickerwaka/iMacSTer)
-- [Wikerwaka testing the iMacSTer](https://youtu.be/8O5fEVcCo0Q)
-- [Wikerwaka assembling the iMacSTer](https://youtu.be/OmDPnWWWzPM)
-- [Matt Gray upgrades an iMac G3 it and now runs on Apple silicon!](https://youtu.be/WoYBuP4Bxiw?si=AiPPqQjk6-E3-r2k)
+- [Historias de éxito](#historias-de-éxito)
+- [Objetivos](#objetivos)
+- [Conectores del chasis y patillaje](#conectores-del-chasis-y-patillaje)
+    * [Extracción de la placa base](#extracción-de-la-placa-base)
+- [Cableado del cable VGA](#cableado-del-cable-vga)
+    * [Fabricación del cable](#fabricación-del-cable)
+- [Preparación de la Raspberry Pi](#preparación-de-la-raspberry-pi)
+    * [Qué instalar](#qué-instalar)
+    * [Configurar resolución y tasa de refresco](#configurar-resolución-y-tasa-de-refresco)
+    * [Cableado de la Raspberry Pi y prueba de la conexión](#cableado-de-la-raspberry-pi-y-prueba-de-la-conexión)
+- [Cableado de Arduino Uno](#cableado-de-arduino-uno)
+- [Cableado de Arduino Nano](#cableado-de-arduino-nano)
+    * [Carga y ejecución del sketch de inicialización](#carga-y-ejecución-del-sketch-de-inicialización)
+- [Cableado de Arduino Uno para transmitir EDID](#cableado-de-arduino-uno-para-transmitir-edid)
+- [Cableado de Arduino Nano para transmitir EDID](#cableado-de-arduino-nano-para-transmitir-edid)
+- [Alimentación de la placa reductora PAV](#alimentación-de-la-placa-reductora-pav)
+- [Encendido y apagado del CRT](#encendido-y-apagado-del-crt)
+- [Véase también](#véase-también)
+   * [Ver las placas](#placas)
+   * [Obtener placas adaptadoras](#pedir-placas)
+   * [Agradecimientos](#agradecimientos)
+   * [Vídeos](#vídeos)
 
-## Goals
+## Historias de éxito
+- [Apple IIe usando el iMac G3 como monitor](https://www.reddit.com/r/VintageApple/comments/fox7b8/my_half_retro_battle_station/)
+- [Apple IIe usando el iMac G3 como monitor 2](https://old.reddit.com/r/VintageApple/comments/fmoi5d/slot_loading_imac_g3_vga_input_hack/)
+- [oshimai ejecutando Windows en un equipo pc104](https://vimeo.com/415301897)
+- [Repositorio de oshimai con enlaces a vídeos](https://github.com/shuuryou/imacg3)
+- [Una Nintendo Switch conectada a un iMac G3](https://www.reddit.com/r/crtgaming/comments/k3hf02/imac_g3_crt_connected_to_switch/)
+- [¡Echa un vistazo al repositorio iMacSTer de wickerwaka, es impresionante!](https://github.com/wickerwaka/iMacSTer)
+- [Wickerwaka probando el iMacSTer](https://youtu.be/8O5fEVcCo0Q)
+- [Wickerwaka ensamblando el iMacSTer](https://youtu.be/OmDPnWWWzPM)
+- [¡Matt Gray actualiza un iMac G3 y ahora funciona con Apple Silicon!](https://youtu.be/WoYBuP4Bxiw?si=AiPPqQjk6-E3-r2k)
 
-The main goal is to convert the iMac G3 into a VGA monitor whithout sacrificing the original CRT and
-using as much of the iMac as possible. The difficult part is tricking the IVAD board into thinking it is 
-still connected to a G3 logic board. the idea is to capture the init sequence and reimplement it using
-a microcontoller like an arduino.
+## Objetivos
 
-Once achieved, one can connect a standard computer to it as if it were a regular monitor with speakers.
-One can even include a motherboard on the inside of the G3 basically converting it into a modern computer.
+El objetivo principal es convertir el iMac G3 en un monitor VGA sin sacrificar el CRT original y aprovechando la mayor parte posible del iMac. La parte difícil es engañar a la placa IVAD para que crea que todavía está conectada a una placa base de G3. La idea es capturar la secuencia de inicio y reimplementarla usando un microcontrolador como un Arduino.
 
-Here are the goals
+Una vez logrado, se puede conectar una computadora estándar como si fuera un monitor común con altavoces.
+Incluso se puede incluir una placa base en el interior del G3, convirtiéndolo básicamente en una computadora moderna.
 
-- [x] Capture IVAD board initialization sequence from the Imac logic board to the IVAD board and implement with mcu & rpi.
-- [x] Document how to control brightness, contrast, screen goemetry ect via the i2c lines.
-- [x] Document as much of the pinouts as possible on the the chassis connectors .
-- [x] [Design circuit boards that will plug into the connectors and allow one to use the on/off button,
-speakers, power LED, mic ect..](#Boards)
-- [x] Design the circuit boards with through hole components so that anyone can build these with just a soldering iron and
-solder.
-- [x] Use the original down-converter board(kind of like a power supply) to power things like
-an amplifier and a slot loading DVD drive.
+Aquí están los objetivos:
+
+- [x] Capturar la secuencia de inicialización de la placa IVAD desde la placa base del iMac a la placa IVAD e implementarla con MCU y RPi.
+- [x] Documentar cómo controlar brillo, contraste, geometría de pantalla, etc. a través de las líneas I2C.
+- [x] Documentar la mayor cantidad posible de patillaje (pinouts) en los conectores del chasis.
+- [x] [Diseñar placas de circuito que se conecten a los conectores y permitan usar el botón de encendido/apagado, altavoces, LED de encendido, micrófono, etc.](#placas)
+- [x] Diseñar las placas de circuito con componentes Through-Hole (de orificio pasante) para que cualquiera pueda construirlas solo con un soldador y estaño.
+- [x] Usar la placa reductora original (down-converter, similar a una fuente de poder) para alimentar elementos como un amplificador y una unidad de DVD slot loading.
 
 
 
 
-## Chassis Connectors and Pinouts
-![ChassisConnectors](images/connectors_and_boards.png?raw=true "Chassis connectors")
+## Conectores del chasis y patillaje
+![ConectoresDelChasis](images/connectors_and_boards.png?raw=true "Conectores del chasis")
 
-### Removing the logic board
-The connector drawings in the above [diagram](#Chassis-Connectors-and-Pinouts) represent the cables
-coming from the CRT analog board that plug into the logic board. To expose these, the logic board must
-be removed.
+### Extracción de la placa base
+Los diagramas de conectores en el [diagrama](#conectores-del-chasis-y-patillaje) anterior representan los cables que vienen de la placa analógica del CRT y se conectan a la placa base. Para exponerlos, se debe retirar la placa base.
 
-## Wiring VGA cable
-![VGACable](images/vga_adapter.png?raw=true "VGA Cable")
+## Cableado del cable VGA
+![CableVGA](images/vga_adapter.png?raw=true "Cable VGA")
 
-### Making the cable
-This is perhaps the most time consuming part of the whole process because not all VGA cables are made the same so the colors for the cable I used may not be the colors used in your cable. Here are the steps I took.<br>
+### Fabricación del cable
+Esta es quizás la parte que más tiempo consume de todo el proceso porque no todos los cables VGA están fabricados de la misma manera, por lo que los colores del cable que utilicé pueden no coincidir con los de tu cable. Estos son los pasos que seguí:<br>
 
 
-- Find a VGA cable to cut.
-- Cut the cable so that you have at least one of the ferrite chokes left on the cable.
-- Cut away the cable jacket such that the wires are at a comfortable handling length. 3 to 4 inches
-- Strip each wire and ring them out to find what color corresponds to each pin on the DE15 connector.
-- Use the [diagram](#Wiring-VGA-cable) above and map your cable to J20 using the DE15 pin numbers as the key.
-- Option 1 ,use a 20 pin header and solder the DE15 wires to it then plug it into J20.
-- Option 2, cut the required wires from J20 and splice them with VGA cable. Solder and use shrink tubing if you can but twisting them and electrical tape works as well. Make sure to leave enough wire on J20 in the event you need to reattach the wires.
+- Consigue un cable VGA para cortar.
+- Corta el cable de modo que te quede al menos uno de los filtros de ferrita en el cable.
+- Pela la cubierta del cable de modo que los cables individuales tengan una longitud cómoda para manipular (de 7 a 10 cm / 3 a 4 pulgadas).
+- Pela cada cable y comprueba la continuidad para descubrir qué color corresponde a cada pin en el conector DE15.
+- Utiliza el [diagrama](#cableado-del-cable-vga) superior y mapea tu cable al conector J20 usando los números de pin de DE15 como clave.
+- Opción 1: Usa una tira de pines (header) de 20 pines y suelda los cables del DE15 a ella, luego conéctala a J20.
+- Opción 2: Corta los cables necesarios de J20 y empálmalos con el cable VGA. Suelda y usa tubo termorretráctil si puedes, aunque trenzarlos y usar cinta aislante también funciona. Asegúrate de dejar suficiente longitud de cable en J20 por si necesitas volver a conectar los cables originales.
 
 
 
-## Preparing the Raspberry Pi
-![WiringRPI](images/raspberry_pi_wiring.png?raw=true "Wiring RPI")
+## Preparación de la Raspberry Pi
+![CableadoRPI](images/raspberry_pi_wiring.png?raw=true "Cableado RPI")
 
-### What to install
-- Install the latest raspian image using a regular monitor.
-- Connect to your network and get the ip address for the pi by opening a terminal and issuing the following.
+### Qué instalar
+- Instala la última imagen de Raspberry Pi OS (Raspbian) utilizando un monitor convencional.
+- Conéctate a tu red y obtén la dirección IP de la Pi abriendo una terminal y ejecutando lo siguiente:
 ```bash
 ifconfig
 ```
-If you connected using wifi then the ip address is under wlan0: , inet.<br>
-If you connected using a cable the the ip adress is under eth0: inet<br>
-- Enable ssh , you'll need this to login from another computer when you don't have a display.
-- Enable I2C.
-- Install i2c-tools & git.
-- ssh to the pi from a terminal if your on a Mac or linux. If you're on Windows use putty to ssh to the pi I'm assuming
-the username is "pi" but replace this with the the username you've created for the pi.
+Si te conectaste por Wi-Fi, la dirección IP está en `wlan0:`, `inet`.<br>
+Si te conectaste por cable, la dirección IP está en `eth0:`, `inet`.<br>
+- Habilita SSH; lo necesitarás para iniciar sesión desde otra computadora cuando no tengas pantalla.
+- Habilita I2C.
+- Instala `i2c-tools` y `git`.
+- Conéctate por SSH a la Pi desde una terminal si estás en Mac o Linux. Si estás en Windows usa PuTTY para conectarte por SSH. Se asume que el usuario es "pi", pero cámbialo por el usuario que hayas creado.
 
 ```bash
 sudo apt-get update && sudo apt-get -y install i2c-tools git
 ```
-- Install smbus and RPI.GPIO for python using pip for the python version you have.
+- Instala `smbus` y `RPi.GPIO` para Python usando pip para la versión de Python que tengas.
 ```bash
-sudo pip install smbus RPI.GPIO
+sudo pip install smbus RPi.GPIO
 ```
-- Clone the iMac IVAD init repo
+- Clona el repositorio de inicialización IVAD del iMac:
 ```bash
 git clone https://github.com/qbancoffee/imac_g3_ivad_board_init.git
 cd imac_g3_ivad_board_init
 ```
-- Copy init_ivad.py to /usr/local/bin & and make it executeable
+- Copia `init_ivad.py` a `/usr/local/bin` y hazlo ejecutable:
 ```bash
 sudo cp init_ivad.py /usr/local/bin
 sudo chmod +x /usr/local/bin/init_ivad.py
 ```
-- Edit rc.local and add the script. Make sure it's added to the line before "exit 0 " or it will not run.
-It also needs to be made executable since by default it doesn't do anything.
+- Edita `rc.local` y añade el script. Asegúrate de agregarlo en la línea anterior a "exit 0" o no se ejecutará.
+También debe tener permisos de ejecución, ya que por defecto no hace nada.
 ```bash
 sudo nano /etc/rc.local
 ```
 
-- It should look something like this
-```
+- Debería verse algo así:
+```bash
 #!/bin/sh -e
 #
 # rc.local
 #
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
+# Este script se ejecuta al final de cada nivel de ejecucion multiusuario.
+# Asegurate de que el script devuelva "exit 0" si finaliza correctamente o cualquier
+# otro valor en caso de error.
 #
-# In order to enable or disable this script just change the execution
-# bits.
+# Para habilitar o deshabilitar este script, cambia los permisos de ejecucion.
 #
-# By default this script does nothing.
+# Por defecto este script no hace nada.
 
-# Print the IP address
+# Imprimir la direccion IP
 _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
-  printf "My IP address is %s\n" "$_IP"
+  printf "Mi direccion IP es %s\n" "$_IP"
 fi
 
 /usr/local/bin/init_ivad.py
 
 exit 0
-
 ```
 
-- Ctrl-x to save and exit
+- Presiona `Ctrl+X` para guardar y salir.
 
-- Make rc.local executable
+- Haz ejecutable `rc.local`:
 ```bash
 sudo chmod +x /etc/rc.local
 ```
 
-### Configure Resolution and Refresh Rate
-- Edit config.txt
+### Configurar resolución y tasa de refresco
+- Edita `config.txt`:
 ```bash
 sudo nano /boot/config.txt
 ```
-- The newer Raspberry Pi OS uses the VC4 V3D driver that causes the video to go blank. Comment the line that enables it and add the Fake VC4 V3D driver.
-```
+- Las versiones más recientes de Raspberry Pi OS usan el controlador VC4 V3D que hace que el video se quede en blanco. Comenta la línea que lo habilita y agrega el controlador Fake VC4 V3D.
+```ini
 # Enable DRM VC4 V3D driver
 #dtoverlay=vc4-kms-v3d
 dtoverlay=vc4-fkms-v3d
-
 ```
-Newer versions of the Raspberry Pi OS will ignore video modes specified in /boot/config.txt if the EDID sent from the monitor is corrupt or missing. Since we are not sending EDID information to the raspberry pi from the iMac we need to tell the OS to ignore the EDID and set the correct video mode.
-- Add the following to the bottom of the file and save.
-```
-#iMac G3 settings
+Las versiones más recientes de Raspberry Pi OS ignorarán los modos de vídeo especificados en `/boot/config.txt` si el EDID enviado desde el monitor está corrupto o falta. Dado que no estamos enviando información EDID a la Raspberry Pi desde el iMac, debemos indicarle al sistema operativo que ignore el EDID y establezca el modo de vídeo correcto.
+- Agrega lo siguiente al final del archivo y guarda:
+```ini
+# Ajustes de iMac G3
 hdmi_ignore_edid=0xa5000080
 hdmi_group=2
 hdmi_mode=18
 ```
-Here is a video where I perform the above steps.
-- [Modding an iMac G3 DV using only a Raspberry Pi](https://youtu.be/xSiqchucFE4)
-### Wiring The Raspberry Pi and testing the connection
+Aquí hay un video donde realizo los pasos anteriores:
+- [Modificar un iMac G3 DV usando únicamente una Raspberry Pi](https://youtu.be/xSiqchucFE4)
 
-In all cases, the IVAD board needs to be initialized when the power analog board is
-turned on for the first time. To do this, the initialization sequence must be sent using the
-I2C lines(SDA & SCL) on the Raspberry Pi's GPIO header. Connect the I2C lines according to the diagram
-above and connect the VGA cable to the HDMI port using a HDMI to VGA converter.
+### Cableado de la Raspberry Pi y prueba de la conexión
 
-- Use i2cdetect to probe the IVAD board. Make sure the iMac is plugged in, it does not have to be turned on for this.
+En todos los casos, la placa IVAD debe inicializarse cuando la placa analógica de alimentación se enciende por primera vez. Para hacer esto, la secuencia de inicialización debe enviarse utilizando las líneas I2C (SDA y SCL) en el conector GPIO de la Raspberry Pi. Conecta las líneas I2C de acuerdo con el diagrama anterior y conecta el cable VGA al puerto HDMI utilizando un convertidor de HDMI a VGA.
+
+- Usa `i2cdetect` para sondear la placa IVAD. Asegúrate de que el iMac esté enchufado; no es necesario que esté encendido para esta prueba.
 
 ```bash
 i2cdetect -y 1
 ```
-- Confirm it found address's 46 and 53, if no luck, check the wiring and make sure I2C is enabled. The output should look something like the following.
-```    
+- Confirma que encontró las direcciones `46` y `53`. Si no tienes éxito, verifica el cableado y asegúrate de que I2C esté habilitado. La salida debería ser similar a la siguiente:
+```
      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
@@ -257,175 +236,169 @@ i2cdetect -y 1
 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 70: -- -- -- -- -- -- -- --
 ```
-- [Turn on the monitor](#Powering-the-CRT-on-and-off) and run the initialization script.The iMac should make
-a nice old school "CRT IS ON"  sound. 
+- [Enciende el monitor](#encendido-y-apagado-del-crt) y ejecuta el script de inicialización. El iMac debería emitir ese agradable sonido clásico de "CRT ENCENDIDO".
 ```bash
 /usr/local/bin/init_ivad.py
 ```
-If there are errors, make sure the iMac is plugged in and check the wiring.<br>
-If there are no errors and there is nothing on the screen, move the mouse or press a key.
-The raspberry pi might have turned off the display due to inactivity.
+Si hay errores, asegúrate de que el iMac esté enchufado y verifica las conexiones.<br>
+Si no hay errores y no aparece nada en pantalla, mueve el ratón o presiona una tecla. La Raspberry Pi podría haber apagado la pantalla por inactividad.
 
-- With the IVAD initialized, Reboot the Raspberry Pi.
+- Con el IVAD inicializado, reinicia la Raspberry Pi.
 
-## Wiring Arduino Uno
-![WiringArduinoUno](images/arduino_uno_wiring.png?raw=true "Wiring Arduino Uno")
+## Cableado de Arduino Uno
+![CableadoArduinoUno](images/arduino_uno_wiring.png?raw=true "Cableado Arduino Uno")
 
-## Wiring Arduino Nano
-![WiringArduinoNano](images/arduino_nano_wiring.png?raw=true "Wiring Arduino Nano")
+## Cableado de Arduino Nano
+![CableadoArduinoNano](images/arduino_nano_wiring.png?raw=true "Cableado Arduino Nano")
 
-### Loading and Running the initialization sketch
-write here
+### Carga y ejecución del sketch de inicialización
+*(Escribir aquí)*
 
-## Wiring Arduino Uno to transmit EDID
-![WiringArduinoUnoToXmitEdid](images/arduino_uno_wiring_to_transmit_edid.png?raw=true "Wiring Arduino Uno to transmit EDID")
+## Cableado de Arduino Uno para transmitir EDID
+![CableadoArduinoUnoParaTransmitirEdid](images/arduino_uno_wiring_to_transmit_edid.png?raw=true "Cableado Arduino Uno para transmitir EDID")
 
-## Wiring Arduino Nano to transmit EDID
-![WiringArduinoNanotoXmitEdid](images/arduino_nano_wiring_to_transmit_edid.png?raw=true "Wiring Arduino Nano to transmit EDID")
+## Cableado de Arduino Nano para transmitir EDID
+![CableadoArduinoNanoParaTransmitirEdid](images/arduino_nano_wiring_to_transmit_edid.png?raw=true "Cableado Arduino Nano para transmitir EDID")
 
-## Powering the down converter board PAV
-![WiringPAV](images/imac_g3_slot_loading_pav_board.png?raw=true "Powering the PAV board")
+## Alimentación de la placa reductora PAV
+![CableadoPAV](images/imac_g3_slot_loading_pav_board.png?raw=true "Alimentacion de la placa PAV")
 
-The CRT analog board provides 24v AC to the PAV or down converter board through the logic board via the J22 
-connector. you can directly connect the PAV board and the analog board through the J22 connector and
-the PAV board will produce the typical mother board volytages. +12v, +5v +3.3v ect...
+La placa analógica del CRT proporciona 24V AC a la placa PAV o reductora (down-converter) a través de la placa base mediante el conector J22. Puedes conectar directamente la placa PAV y la placa analógica a través del conector J22 y la placa PAV generará los voltajes típicos de una placa base: +12V, +5V, +3.3V, etc.
 
-## Powering the CRT on and off
-![CRTOnAndOff](images/crt_power_on_and_off.png?raw=true "CRT On and Off")
+## Encendido y apagado del CRT
+![CRTEncendidoYApagado](images/crt_power_on_and_off.png?raw=true "Encendido y apagado del CRT")
 
-## See Also
-### Boards
-# J20 Board
-What it does.
-- detects button presses
-- sends the init sequence to the IVAD boar
-- sends the "turn-on" signal to the down-converter board
-- has a control line "PROT" that when 5 volts are applied turns everythin off. A shut-off signal can be sent here.
-- powers the green LED
-- sends EDID information via VGA cable so that a connected computer knows how to configure the monitor for use.
+## Véase también
+### Placas
+# Placa J20
+Qué hace:
+- Detecta pulsaciones de botones.
+- Envía la secuencia de inicialización a la placa IVAD.
+- Envía la señal de encendido a la placa reductora (down-converter).
+- Cuenta con una línea de control "PROT" que, al aplicar 5 voltios, apaga todo. Aquí se puede enviar una señal de apagado.
+- Alimenta el LED verde.
+- Envía información EDID a través del cable VGA para que la computadora conectada sepa cómo configurar el monitor para su uso.
 </br>
 
-This board works but as of March 23 2020 it needs a slight modification to make it more robust.
-# Rendition
-![J20](images/J20_board.png?raw=true "J20 VGA adapter board")
-# Board installed
-![J20Installed](images/J20_board_installed.jpg?raw=true "J20 VGA adapter board installed")
+Esta placa funciona, pero a fecha del 23 de marzo de 2020 requiere una ligera modificación para hacerla más robusta.
+# Renderizado
+![J20](images/J20_board.png?raw=true "Placa adaptadora VGA J20")
+# Placa instalada
+![J20Instalada](images/J20_board_installed.jpg?raw=true "Placa adaptadora VGA J20 instalada")
 </br>
 
-# Rendiiton of Rev 2 of the J20 board.
-![J20REV2](images/J20_board_rev2.png?raw=true "J20 VGA adapter board Rev 2")
+# Renderizado de la Rev 2 de la placa J20.
+![J20REV2](images/J20_board_rev2.png?raw=true "Placa adaptadora VGA J20 Rev 2")
 </br>
 
-# J22 Board
-What it does.
-- provides access to the microphone and the speakers
-- provides access to the power button
-- provides access to the green LED
-- provides access to the amber LED
-- provides access to the headphone jacks 
-- routes 24 VAC from the analog(CRT) board to the the down converter break out board.
+# Placa J22
+Qué hace:
+- Proporciona acceso al micrófono y a los altavoces.
+- Proporciona acceso al botón de encendido.
+- Proporciona acceso al LED verde.
+- Proporciona acceso al LED ámbar.
+- Proporciona acceso a las tomas de auriculares.
+- Enruta 24 VAC desde la placa analógica (CRT) hacia la placa adaptadora reductora (down-converter breakout).
 </br>
 
-This board has been tested and mostly worked. I found that the mic was miswired
-but I've since fixed that.
-![J22](images/J22_board.png?raw=true "J22 speaker/mic/led/power button breakout board")
-![J22Installed](images/J22_board_installed.jpg?raw=true "J22 speaker/mic/led/power button breakout board installed")
-</br>
-# Down-converter breakout board
-What it does
-- provides a 24 VAC input from the J22 board into the down-converter board
-- provides a "turn-on" input for the J20 board, this is DCO, which stands for Down Converter On
-- provides 3.3 VDC out from the down-converter board that turns on and off with the CRT.
-- provides   5 VDC out from the down-converter board that turns on and off with the CRT.
-- provides  12 VDC out from the down-converter board that turns on and off with the CRT.
-- provides a constant  8 VDC standby voltage when all is off and 12 VDC when all is on.
-- provided a constant 15 VDC standby voltage when all is off and 24 VDC when all is on.
-</br>
-The down-conveter uses the 24 VAC coming from J22 in order to power the original logic board and drives. Some people have called this the iMac G3 power supply. This is what it looks like.
-
-![DCB](/images/removing_down_converter_board.png?raw=true "Removing down-converter board")
-</br>
-# Rendition
-![DCB1](images/down_converter_breakout_board.png?raw=true "Breakout board for the down-converter board so one can power things.")
-</br>
-# Actual Board
-![DCB2](images/down_converter_breakout_board.jpg?raw=true "Breakout board for the down-converter board so one can power things.")
-</br>
-# Board installed
-![DCB3](images/down_converter_breakout_board_installed.jpg?raw=true "Breakout board for the down-converter board so one can power things.")
-
+Esta placa ha sido probada y funcionó en su mayoría. Descubrí que el micrófono estaba mal cableado, pero ya lo he corregido.
+![J22](images/J22_board.png?raw=true "Placa adaptadora de altavoz/microfono/led/boton de encendido J22")
+![J22Instalada](images/J22_board_installed.jpg?raw=true "Placa adaptadora de altavoz/microfono/led/boton de encendido J22 instalada")
 </br>
 
-### Ordering Boards
-All PCB manufacturers should accept gerber files to manufacture boards so I've decided
-to design these in KiCAD which is suite of open source EDA programs to create schematics and
-design PCBs. There are no limitations to the size of the board and you don't have to order from
-a specific vendor.
+# Placa adaptadora reductora (Down-converter breakout board)
+Qué hace:
+- Proporciona una entrada de 24 VAC desde la placa J22 hacia la placa reductora.
+- Proporciona una entrada de encendido ("turn-on") para la placa J20; esta es DCO, que significa Down Converter On.
+- Proporciona salida de 3.3 VDC desde la placa reductora que se enciende y apaga con el CRT.
+- Proporciona salida de 5 VDC desde la placa reductora que se enciende y apaga con el CRT.
+- Proporciona salida de 12 VDC desde la placa reductora que se enciende y apaga con el CRT.
+- Proporciona un voltaje de espera (standby) constante de 8 VDC cuando todo está apagado y 12 VDC cuando todo está encendido.
+- Proporciona un voltaje de espera (standby) constante de 15 VDC cuando todo está apagado y 24 VDC cuando todo está encendido.
+</br>
 
-Recently I've been using https://jlcpcb.com/ and the turn arounds are fast for the price.
-In the "schematics_and_pcbs" folder are the three kicad projects for each board, each in its own folder.
-I've included the gerber files and zipped them up for convenience, they are in the gerber directory
-for each project. To order you can just upload the zip file to https://jlcpcb.com/ or whatever company you choose
-and you should get them in the mail. There is a bill of materials included in each project folder. It's a csv file
-that includes the reference number, the part number and vendor so you can order the componets to build the boards.
-I like to buy from digikey but obviously you can find a vendor that fits your needs.
+El convertidor reductor utiliza los 24 VAC provenientes de J22 para alimentar la placa base original y las unidades de disco. Algunas personas han llamado a esto la fuente de alimentación del iMac G3. Así es como se ve:
 
-### Acknowledgements
+![DCB](/images/removing_down_converter_board.png?raw=true "Extraccion de la placa reductora")
+</br>
 
-- [patriciooholegu for inspiring me to do this with an eMac](https://forums.macrumors.com/threads/i-have-decided-to-hack-emacs-crt-to-work-with-any-standard-motherboard.1754089/post-19353472)
-- [ym58 for providing the video connector wiring.](https://www.tonymacx86.com/threads/imac-g3-slot-mod-video-connector.125515/)
-- [Eric Bylenga for providing the pinout for the PAV board.](http://bylenga.ddns.net/index.php?page=vcr.php)
-- [sparpet for capturing and sharing the IVAD initialization code](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-25819428)
-- [jamie-g for providing a way to adjust monitor settings via i2c](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-25679538)
-- [iMac speaker replacement by TEch Chrunch](https://youtu.be/yc8NGDw5aSQ)
-- [DrJekyll_XYZ for providing xrandr output that lead to creating an EDID](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28272422)
-- [DrJekyll_XYZ for suggesting the PAM8403 chip for audio](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28249216)
-- [anotherelise for providing another init sequence](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28346679)
-- [anotherelise for providing IVAD CRT property adjustment capture](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28349738)
-- [oshimai for extracting several EDID's and fiding one that works flawlessly](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28359571)
-- [oshimai for coming up with the idea of monitoring VSYNC to use as a signal to shut off the CRT](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28345426)
+# Renderizado
+![DCB1](images/down_converter_breakout_board.png?raw=true "Placa adaptadora para la placa reductora para poder alimentar componentes.")
+</br>
 
-### Videos
-- [Booting an non-modded iMac G3 to confirm the CRT turns on](https://youtu.be/meIzAyQd0t0)
-- [Initializing IVAD board with an Arduino Uno](https://youtu.be/JLaHMjQ7idI)
-- [Using iMac G3 as a second monitor with custom modeline](https://youtu.be/iSCjOOsf-QQ)
-- [Tweaking the modeline to make the iMac G3 fullscreen](https://youtu.be/1DeY3o7P60g)
-- [Sending the EDID via the VGA cable to a connected computer](https://youtu.be/KzHUogEQob4)
-- [Using CRT without the logic board](https://youtu.be/MbTqhlqsKoY)
-- [Running DOSBOX](https://youtu.be/PG7bluXxrPA)
-- [Initializing the CRT using only a Raspberry Pi](https://youtu.be/isjo-4vQxwM)
-- [Powering the iMac G3 on and off using an arduino and two transistors](https://youtu.be/-TeNbAcnvbk)
-- [Powering the Down Convetrer Board without the logic board](https://youtu.be/xmISR5iBjTU)
-- [Using CRT on second iMac without logic board](https://youtu.be/UcsI3FVfpCM)
-- [Powering an arduino nano with only the triclke voltage provided by the analog board](https://youtu.be/KuT7AKvZXhk)
-- [iMac G3 speaker repair](https://youtu.be/jgs-gkoiUrA)
-- [Testing replacement speakers with smooth criminal](https://youtu.be/Vm1vN6xlomQ)
-- [Testing an SBC inside the iMac G3 ](https://youtu.be/ZOYHHg9NhZA)
-- [Powering a computer using the iMac's down converter board](https://youtu.be/1DuaIlEZ5WU)
-- [Using a PAM8403 board to drive the speakers on the iMac G3](https://youtu.be/jEA85s0Cqyg)
-- [Testing Retropie with iMac G3 monitor](https://youtu.be/S1fnj0tsFQA)
-- [Testing J20 board for the first time](https://youtu.be/_IMhMkrIE4M)
-- [Testing the J22 board with a raspberry pi](https://youtu.be/HR-qM3-7SYA)
-- [Testing audio via the J22 breakout board 1](https://youtu.be/MyON9M_RYCk)
-- [Testing audio via the J22 breakout board 2](https://youtu.be/EDeFRHsqa5c)
-- [Testing the down converter breakout board for the first time.](https://youtu.be/BQKrsIXOSxU)
-- [Mirroring an iMac G3 DV with this iMac G3 monitor hack](https://youtu.be/4jHPZWJs-aY)
-- [All three boards installed and working.](https://youtu.be/dqxeiFkvuYg)
-- [Rapberry Pi + Arduino powered iMac G3 hybrid running RetroPie](https://youtu.be/CLCZFmmEnno)
-- [Adjusting iMac G3 picture settings via a serial terminal](https://youtu.be/9LLsHE3xdBA)
-- [Adjusting iMac G3 picture settings with a java based GUI](https://youtu.be/zrzcvThxDeY)
-- [Monitoring VSYNC to shut CRT off](https://youtu.be/fBMyjlEAZAw)
-- [Cloning compiling and running oshimai's gui](https://youtu.be/DqM9bZfvwgM)
-- [Stable arduino sketch that can communicate with oshimais GUI](https://youtu.be/inmUAiIA7sg)
-- [Oshimais GUI running on a raspberry pi3 under mono](https://youtu.be/g9aLTrW5eaU)
-- [Making a desktop recording the iMac G3 monitor with a raspberry pi, running oshimais gui](https://youtu.be/JA01o5xfwxg)
-- [Assembling the J20 adapter board](https://youtu.be/qILuajxscnE)
-- [Assembling the J22 adapter board](https://youtu.be/JCPRYKbwKyk)
-- [Using a Gert VGA 666 adapter + Raspberry pi 3 with an Imac G3 monitor](https://youtu.be/5H0nzaTycOg)
-- [Playing a round of among us using the iMac G3 as a monitor](https://youtu.be/MomKAUGT8i8)
-- [Playing minecraft using the iMac G3 as a monitor](https://youtu.be/VxJVShNo72g)
-- [Converting an iMac G3 DV into a monitor start to finish](https://youtu.be/guVSI1aqcJg)
-- [Playing Duck Hunt and Super Mario Bros with my NES on the iMac G3](https://youtu.be/wCEGIwrCOMQ)
-- [Playing "The Legend of Zelda" with my NES on the iMac G3](https://youtu.be/OpjjOnSjGQU)
-- [Using my CoCo 2 on the iMac G3](https://youtu.be/9cu0CFqIWnc)
-- [Modding an iMac G3 DV using only a Raspberry Pi](https://youtu.be/xSiqchucFE4)
+# Placa real
+![DCB2](images/down_converter_breakout_board.jpg?raw=true "Placa adaptadora para la placa reductora para poder alimentar componentes.")
+</br>
+
+# Placa instalada
+![DCB3](images/down_converter_breakout_board_installed.jpg?raw=true "Placa adaptadora para la placa reductora para poder alimentar componentes.")
+
+</br>
+
+### Pedir placas
+Todos los fabricantes de PCB deberían aceptar archivos Gerber para fabricar placas, por lo que he decidido diseñarlas en KiCAD, que es una suite de programas EDA de código abierto para crear esquemas y diseñar PCBs. No hay limitaciones en el tamaño de la placa y no tienes que realizar el pedido a un proveedor específico.
+
+Recientemente he estado utilizando https://jlcpcb.com/ y los tiempos de entrega son rápidos para el precio.
+En la carpeta "schematics_and_pcbs" se encuentran los tres proyectos de KiCAD para cada placa, cada uno en su propia carpeta.
+He incluido los archivos Gerber comprimidos en zip para mayor comodidad; se encuentran en el directorio gerber de cada proyecto. Para hacer el pedido, simplemente sube el archivo zip a https://jlcpcb.com/ o a la empresa que elijas y deberías recibirlas por correo. Se incluye una lista de materiales (BOM) en la carpeta de cada proyecto. Es un archivo CSV que incluye el número de referencia, el número de pieza y el proveedor para que puedas pedir los componentes para ensamblar las placas.
+A mí me gusta comprar en Digi-Key, pero obviamente puedes encontrar el proveedor que mejor se adapte a tus necesidades.
+
+### Agradecimientos
+
+- [patriciooholegu por inspirarme a hacer esto con un eMac](https://forums.macrumors.com/threads/i-have-decided-to-hack-emacs-crt-to-work-with-any-standard-motherboard.1754089/post-19353472)
+- [ym58 por proporcionar el cableado del conector de video.](https://www.tonymacx86.com/threads/imac-g3-slot-mod-video-connector.125515/)
+- [Eric Bylenga por proporcionar el patillaje de la placa PAV.](http://bylenga.ddns.net/index.php?page=vcr.php)
+- [sparpet por capturar y compartir el código de inicialización de IVAD](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-25819428)
+- [jamie-g por proporcionar una forma de ajustar la configuración del monitor a través de I2C](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-25679538)
+- [Reemplazo de altavoces de iMac por Tech Crunch](https://youtu.be/yc8NGDw5aSQ)
+- [DrJekyll_XYZ por proporcionar la salida de xrandr que condujo a la creación de un EDID](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28272422)
+- [DrJekyll_XYZ por sugerir el chip PAM8403 para audio](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28249216)
+- [anotherelise por proporcionar otra secuencia de inicialización](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28346679)
+- [anotherelise por proporcionar la captura de ajuste de propiedades CRT de IVAD](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28349738)
+- [oshimai por extraer varios EDID y encontrar uno que funciona a la perfección](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28359571)
+- [oshimai por idear la monitorización de VSYNC para usar como señal de apagado del CRT](https://forums.macrumors.com/threads/imac-g3-mod-video-connector.1712095/post-28345426)
+
+### Vídeos
+- [Arrancar un iMac G3 sin modificar para confirmar que el CRT se enciende](https://youtu.be/meIzAyQd0t0)
+- [Inicializar la placa IVAD con un Arduino Uno](https://youtu.be/JLaHMjQ7idI)
+- [Usar el iMac G3 como segundo monitor con modeline personalizada](https://youtu.be/iSCjOOsf-QQ)
+- [Ajustar la modeline para que el iMac G3 quede en pantalla completa](https://youtu.be/1DeY3o7P60g)
+- [Enviar el EDID a través del cable VGA a una computadora conectada](https://youtu.be/KzHUogEQob4)
+- [Usar el CRT sin la placa base](https://youtu.be/MbTqhlqsKoY)
+- [Ejecutar DOSBox](https://youtu.be/PG7bluXxrPA)
+- [Inicializar el CRT usando únicamente una Raspberry Pi](https://youtu.be/isjo-4vQxwM)
+- [Encender y apagar el iMac G3 usando un Arduino y dos transistores](https://youtu.be/-TeNbAcnvbk)
+- [Alimentar la placa reductora (Down Converter) sin la placa base](https://youtu.be/xmISR5iBjTU)
+- [Usar el CRT en un segundo iMac sin la placa base](https://youtu.be/UcsI3FVfpCM)
+- [Alimentar un Arduino Nano únicamente con el voltaje residual (trickle) proporcionado por la placa analógica](https://youtu.be/KuT7AKvZXhk)
+- [Reparación de altavoces de iMac G3](https://youtu.be/jgs-gkoiUrA)
+- [Probando altavoces de reemplazo con Smooth Criminal](https://youtu.be/Vm1vN6xlomQ)
+- [Probando una SBC dentro del iMac G3](https://youtu.be/ZOYHHg9NhZA)
+- [Alimentando una computadora usando la placa reductora del iMac](https://youtu.be/1DuaIlEZ5WU)
+- [Usando una placa PAM8403 para controlar los altavoces en el iMac G3](https://youtu.be/jEA85s0Cqyg)
+- [Probando RetroPie con el monitor del iMac G3](https://youtu.be/S1fnj0tsFQA)
+- [Probando la placa J20 por primera vez](https://youtu.be/_IMhMkrIE4M)
+- [Probando la placa J22 con una Raspberry Pi](https://youtu.be/HR-qM3-7SYA)
+- [Probando audio a través de la placa adaptadora J22 (parte 1)](https://youtu.be/MyON9M_RYCk)
+- [Probando audio a través de la placa adaptadora J22 (parte 2)](https://youtu.be/EDeFRHsqa5c)
+- [Probando la placa adaptadora reductora por primera vez](https://youtu.be/BQKrsIXOSxU)
+- [Duplicando la pantalla de un iMac G3 DV con este hack de monitor iMac G3](https://youtu.be/4jHPZWJs-aY)
+- [Las tres placas instaladas y funcionando](https://youtu.be/dqxeiFkvuYg)
+- [Híbrido de iMac G3 impulsado por Raspberry Pi + Arduino ejecutando RetroPie](https://youtu.be/CLCZFmmEnno)
+- [Ajustando los parámetros de imagen del iMac G3 a través de una terminal serie](https://youtu.be/9LLsHE3xdBA)
+- [Ajustando los parámetros de imagen del iMac G3 con una interfaz gráfica basada en Java](https://youtu.be/zrzcvThxDeY)
+- [Monitorizando VSYNC para apagar el CRT](https://youtu.be/fBMyjlEAZAw)
+- [Clonando, compilando y ejecutando la GUI de oshimai](https://youtu.be/DqM9bZfvwgM)
+- [Sketch estable de Arduino que puede comunicarse con la GUI de oshimai](https://youtu.be/inmUAiIA7sg)
+- [La GUI de oshimai ejecutándose en una Raspberry Pi 3 bajo Mono](https://youtu.be/g9aLTrW5eaU)
+- [Grabación de escritorio en el monitor del iMac G3 con una Raspberry Pi, ejecutando la GUI de oshimai](https://youtu.be/JA01o5xfwxg)
+- [Ensamblando la placa adaptadora J20](https://youtu.be/qILuajxscnE)
+- [Ensamblando la placa adaptadora J22](https://youtu.be/JCPRYKbwKyk)
+- [Usando un adaptador Gert VGA 666 + Raspberry Pi 3 con un monitor iMac G3](https://youtu.be/5H0nzaTycOg)
+- [Jugando una partida de Among Us usando el iMac G3 como monitor](https://youtu.be/MomKAUGT8i8)
+- [Jugando Minecraft usando el iMac G3 como monitor](https://youtu.be/VxJVShNo72g)
+- [Convirtiendo un iMac G3 DV en monitor de principio a fin](https://youtu.be/guVSI1aqcJg)
+- [Jugando Duck Hunt y Super Mario Bros con mi NES en el iMac G3](https://youtu.be/wCEGIwrCOMQ)
+- [Jugando "The Legend of Zelda" con mi NES en el iMac G3](https://youtu.be/OpjjOnSjGQU)
+- [Usando mi CoCo 2 en el iMac G3](https://youtu.be/9cu0CFqIWnc)
+- [Modificando un iMac G3 DV usando únicamente una Raspberry Pi](https://youtu.be/xSiqchucFE4)

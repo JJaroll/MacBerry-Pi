@@ -1,3 +1,3 @@
-These three parts comprise a mount for a raspberry pi 4 inside of the iMac G3.
-These parts were created and graciously given to this project by 
-Rudy https://reng.ca so that others can enjoy it.
+Estas tres piezas componen un soporte para una Raspberry Pi 4 dentro del iMac G3.
+Estas piezas fueron creadas y generosamente aportadas a este proyecto por 
+Rudy https://reng.ca para que otros puedan disfrutarlo.

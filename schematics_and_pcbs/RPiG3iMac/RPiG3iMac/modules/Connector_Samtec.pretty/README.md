@@ -1,15 +1,15 @@
 # Connector_Samtec.pretty
-This library contains footprints for Samtec connectors
+Esta biblioteca contiene huellas (footprints) para conectores Samtec
 
 ---
 
-Specialized scripts are used to generate the following connectors:
+Se utilizan scripts especializados para generar los siguientes conectores:
 
 - LHMS
 
-Script details:
+Detalles del script:
 
-- author: Poeschl Rene
-- script location: https://github.com/pointhi/kicad-footprint-generator/tree/master/scripts/Connector/Connector_Samtec/
-- used config file: config_KLCv3.0.yaml
-- python version: 3.6.2
+- autor: Poeschl Rene
+- ubicación del script: https://github.com/pointhi/kicad-footprint-generator/tree/master/scripts/Connector/Connector_Samtec/
+- archivo de configuración usado: config_KLCv3.0.yaml
+- versión de python: 3.6.2
