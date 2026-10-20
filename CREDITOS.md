@@ -45,6 +45,8 @@ Parte del diseño del master (enrutado, verificación geométrica, Gerber, visor
 | [KiCad](https://www.kicad.org) (formato `.kicad_pcb`) y su fuente *Newstroke* | Formato de las placas y trazo del texto en serigrafía | GPL-3.0 con excepción de bibliotecas / CC-BY-SA para las fuentes |
 | [gerbonara](https://github.com/jaseg/gerbonara) | Lectura y vista previa de los Gerber | Apache-2.0 |
 | [segno](https://github.com/heuer/segno) | Código QR de la serigrafía del master | BSD-3-Clause |
+| [InteractiveHtmlBom](https://github.com/openscopeproject/InteractiveHtmlBom) (plantilla `ibom.html`) y [lz-string](https://github.com/pieroxy/lz-string) | BOM interactivo de cada placa | MIT |
+| [Fuentes Hershey](https://en.wikipedia.org/wiki/Hershey_fonts) (paquete [HersheyFonts](https://pypi.org/project/HersheyFonts/)) | Texto de la serigrafía en los iBOM | Dominio público / MIT |
 | [Shapely](https://shapely.readthedocs.io), [trimesh](https://trimesh.org), [ezdxf](https://ezdxf.mozman.at) | Geometría, exportación de STL y DXF | BSD-3-Clause / MIT |
 | [Outfit](https://fonts.google.com/specimen/Outfit) y [JetBrains Mono](https://www.jetbrains.com/lp/mono/) | Tipografías de los visores (opcionales; sin internet se usa la tipografía del sistema) | SIL OFL 1.1 |
 

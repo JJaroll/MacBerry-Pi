@@ -8,6 +8,8 @@ Placas de [qbancoffee](https://github.com/qbancoffee/imac_g3_ivad_board_init) (L
 | `J22_frontal_audio/` | J22 (Rev 2) | Botón, LED, altavoces, audífonos, micrófono y 24 VAC |
 | `DownConverter/` | Down Converter (Rev 1) | Breakout de la placa PAV: +3,3, +5, +12 V y standby |
 
+Cada carpeta incluye `ibom_es.html`, el **BOM interactivo en español** de esa placa (J20 azul, J22 púrpura, Down Converter negro). Ábrelo con doble clic. Se genera con [`../../utilidades/generar_ibom/`](../../utilidades/generar_ibom). El iBOM original en inglés está en `fabricacion/bom/ibom.html`.
+
 ## Glosario de la serigrafía
 
 | Inglés | Español |

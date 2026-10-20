@@ -52,6 +52,19 @@ Macberri Pi/
 
 Funcionan con doble clic y sin internet (three.js y los STL van incrustados). Solo las tipografías de algunos visores vienen de Google Fonts; sin conexión se usa la del sistema.
 
+## BOM interactivo (iBOM)
+
+Cada placa tiene su BOM interactivo en español: lista de componentes, posición en la placa (cara frontal y trasera), pistas, zonas y serigrafía. Se abren con doble clic. Colores base: J20 azul, J22 púrpura, Down Converter negro y master verde.
+
+| Placa | iBOM |
+|---|---|
+| PCB master v5 | [`hardware/master_pcb/ibom_master.html`](hardware/master_pcb/ibom_master.html) |
+| J20 · video y ATmega | [`hardware/placas_individuales/J20_video/ibom_es.html`](hardware/placas_individuales/J20_video/ibom_es.html) |
+| J22 · frontal y audio | [`hardware/placas_individuales/J22_frontal_audio/ibom_es.html`](hardware/placas_individuales/J22_frontal_audio/ibom_es.html) |
+| Down Converter | [`hardware/placas_individuales/DownConverter/ibom_es.html`](hardware/placas_individuales/DownConverter/ibom_es.html) |
+
+Se generan con [`utilidades/generar_ibom/`](utilidades/generar_ibom), sin KiCad. Los iBOM originales (en inglés) siguen en `originales/` y en `fabricacion/bom/`.
+
 ## Placas individuales o master
 
 - **Placas individuales** ([`hardware/placas_individuales/`](hardware/placas_individuales)): el diseño original con sus borneras y el cableado de siempre. Es lo más sencillo de fabricar y ensamblar (todo *through-hole*). Serigrafía y comentarios traducidos al español y firma `JJaroll.dev`.

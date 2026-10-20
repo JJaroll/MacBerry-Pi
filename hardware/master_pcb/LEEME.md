@@ -6,6 +6,7 @@
 | `PCB_imac_unificado_master_v5_placa_vacia.kicad_pcb` | Placa vacía, sin pistas ni huellas |
 | `JJaroll.pretty/` + `fp-lib-table` | Biblioteca de huellas del proyecto (15 huellas) |
 | `PCB_imac_unificado_master_v5_con_corte_gerber.zip` | **Listo para fabricar**: Gerbers (F/B Cu, máscara, serigrafía, pasta, Edge.Cuts) y taladros Excellon PTH/NPTH con sus mapas en PDF. Generado desde la versión vigente |
+| `ibom_master.html` | BOM interactivo del master (verde); se abre con doble clic. Ver `utilidades/generar_ibom/` |
 | `*_contorno_1a1.dxf`, `*.svg` | Contorno 1:1 (el contorno no cambió) |
 | `vistas_previas/` | Vistas superior e inferior y detalle de logos, renderizadas desde los Gerbers vigentes |
 
