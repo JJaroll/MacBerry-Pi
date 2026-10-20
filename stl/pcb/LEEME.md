@@ -5,7 +5,6 @@ Generados desde el diseño 1:1 (`hardware/master_pcb/`). Extrusión de 1,6 mm (F
 | Archivo | Contenido |
 |---|---|
 | `master_v5_con_corte.stl` | Master con el hueco real de la Raspberry Pi 5 + case (102 × 74 mm) y 2 agujeros de base Ø3 |
-| `master_v5_sin_corte.stl` | Master con la zona del hueco sin cortar |
 | `placa_J22_frontal_audio.stl` | Placa J22 en su bolsillo (giro 90°) |
 | `placa_J20_video.stl` | Placa J20 en su bolsillo (giro 26,2°) |
 | `placa_DownConverter.stl` | Placa Down Converter en su bolsillo |
