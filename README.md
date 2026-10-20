@@ -79,7 +79,7 @@ Se generan con [`utilidades/generar_ibom/`](utilidades/generar_ibom), sin KiCad.
 - Documentación del proyecto original y guía MacBerry Pi (Raspberry Pi 5) en español.
 - PCB master, visores, mapas de cableado y STL nuevos.
 
-Los Gerber de las placas individuales **no** se regeneraron con la traducción: abre cada `.kicad_pcb` en KiCad y exporta los tuyos. Los Gerber originales (serigrafía en inglés) están en [`originales/proyecto_kicad_original/`](originales/proyecto_kicad_original).
+Las placas individuales incluyen su Gerber en español listo para fabricar (`fabricacion/*_gerber.zip`), con DRC revisado. Los Gerber originales (serigrafía en inglés) siguen en [`originales/proyecto_kicad_original/`](originales/proyecto_kicad_original).
 
 ## Contribuir
 

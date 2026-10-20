@@ -10,6 +10,8 @@ Placas de [qbancoffee](https://github.com/qbancoffee/imac_g3_ivad_board_init) (L
 
 Cada carpeta incluye `ibom_es.html`, el **BOM interactivo en español** de esa placa (J20 azul, J22 púrpura, Down Converter negro). Ábrelo con doble clic. Se genera con [`../../utilidades/generar_ibom/`](../../utilidades/generar_ibom). El iBOM original en inglés está en `fabricacion/bom/ibom.html`.
 
+Cada carpeta trae también su `.kicad_pro` (reglas de diseño ajustadas al diseño original: distancia cobre–borde 0,2 mm y avisos de alivio térmico) y el Gerber listo para fabricar en `fabricacion/*_gerber.zip`. Abre el proyecto desde el Gestor de proyectos de KiCad para que se carguen las reglas.
+
 ## Glosario de la serigrafía
 
 | Inglés | Español |
