@@ -6,7 +6,7 @@
 	(descr "Terminal Block Phoenix PT-1,5-10-5.0-H, 10 pins, pitch 5mm, size 50x9mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.mouser.com/ds/2/324/ItemDetail_1935161-922578.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix")
 	(tags "THT Terminal Block Phoenix PT-1,5-10-5.0-H pitch 5mm size 50x9mm^2 drill 1.3mm pad 2.6mm")
 	(property "Reference" "REF**"
-		(at 22.5 -5.06 90)
+		(at 22.5 -5.06 180)
 		(layer "F.SilkS")
 		(uuid "37b4ddee-0c4b-5604-8b36-6f032f2eef00")
 		(effects
@@ -17,7 +17,7 @@
 		)
 	)
 	(property "Value" "Screw_Terminal_01x10"
-		(at 22 -3 90)
+		(at 22 -3 180)
 		(layer "F.Fab")
 		(uuid "137b3580-e62c-5877-af29-de354ec15b25")
 		(effects
@@ -28,7 +28,7 @@
 		)
 	)
 	(property "Datasheet" ""
-		(at 0 0 270)
+		(at 0 0)
 		(layer "F.Fab")
 		(hide yes)
 		(uuid "c1a0fd5f-1ac1-584b-baa4-e6595bae7c52")
@@ -39,7 +39,7 @@
 		)
 	)
 	(property "Description" ""
-		(at 0 0 270)
+		(at 0 0)
 		(layer "F.Fab")
 		(hide yes)
 		(uuid "68136971-85f9-530e-8399-7ae954724bef")
@@ -1063,7 +1063,7 @@
 		(uuid "c673bfc5-2079-50c1-ae62-c23668b7d467")
 	)
 	(fp_text user "${REFERENCE}"
-		(at 22.5 2.9 90)
+		(at 22.5 2.9 180)
 		(layer "F.Fab")
 		(uuid "c5ec5241-82b9-555a-bfb5-860364f34095")
 		(effects
@@ -1074,7 +1074,7 @@
 		)
 	)
 	(pad "1" thru_hole rect
-		(at 0 0 270)
+		(at 0 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1082,7 +1082,7 @@
 		(uuid "37c82cd5-733e-5870-af34-8aba3f8470bd")
 	)
 	(pad "2" thru_hole circle
-		(at 5 0 270)
+		(at 5 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1090,7 +1090,7 @@
 		(uuid "357f23de-7332-5a54-a39b-9c2be07291c0")
 	)
 	(pad "3" thru_hole circle
-		(at 10 0 270)
+		(at 10 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1098,7 +1098,7 @@
 		(uuid "529e2af9-0a84-5761-852d-e285b1ce45cb")
 	)
 	(pad "4" thru_hole circle
-		(at 15 0 270)
+		(at 15 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1106,7 +1106,7 @@
 		(uuid "a9d2bf4e-5fd9-57fe-ad2d-79d24e154f37")
 	)
 	(pad "5" thru_hole circle
-		(at 20 0 270)
+		(at 20 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1114,7 +1114,7 @@
 		(uuid "e3d264ed-af50-5b58-bd68-f2a383615378")
 	)
 	(pad "6" thru_hole circle
-		(at 25 0 270)
+		(at 25 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1122,7 +1122,7 @@
 		(uuid "894f1867-8312-5f3a-89a1-97de26a33560")
 	)
 	(pad "7" thru_hole circle
-		(at 30 0 270)
+		(at 30 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1130,7 +1130,7 @@
 		(uuid "21eeb56c-96d5-5101-8394-8eb9e8002ae1")
 	)
 	(pad "8" thru_hole circle
-		(at 35 0 270)
+		(at 35 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1138,7 +1138,7 @@
 		(uuid "0b34d38f-1b77-5f18-85fd-9211bd554422")
 	)
 	(pad "9" thru_hole circle
-		(at 40 0 270)
+		(at 40 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")
@@ -1146,7 +1146,7 @@
 		(uuid "e07189fe-2086-51ce-bee6-0b745275bf08")
 	)
 	(pad "10" thru_hole circle
-		(at 45 0 270)
+		(at 45 0)
 		(size 2.6 2.6)
 		(drill 1.3)
 		(layers "*.Cu" "*.Mask")

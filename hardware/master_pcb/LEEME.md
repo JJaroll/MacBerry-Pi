@@ -5,7 +5,7 @@
 | `PCB_imac_unificado_master_v5_con_corte.kicad_pcb` | Versión vigente (QR al repositorio, DRC sin errores, cobre alejado del hueco de la Pi) |
 | `PCB_imac_unificado_master_v5.kicad_pcb` | Variante sin el corte (no incluye los cambios recientes) |
 | `PCB_imac_unificado_master_v5_placa_vacia.kicad_pcb` | Placa vacía, sin pistas ni huellas |
-| `JJaroll.pretty/` + `fp-lib-table` | Biblioteca de huellas del proyecto (14 huellas) |
+| `JJaroll.pretty/` + `fp-lib-table` | Biblioteca de huellas del proyecto (15 huellas) |
 | `*_gerber.zip`, `*.dxf`, `*.svg`, `vistas_previas/` | Exportaciones (el Gerber y las vistas previas son de una versión anterior: re-exporta desde KiCad) |
 
 ## Abrirlo sin avisos de biblioteca

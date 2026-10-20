@@ -2041,7 +2041,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "JJaroll:TerminalBlock_Phoenix_PT-1,5-10-5.0-H_1x10_P5.00mm_Horizontal"
+	(footprint "JJaroll:TerminalBlock_Phoenix_PT-1,5-10-5.0-H_1x10_P5.00mm_Horizontal_J22"
 		(layer "F.Cu")
 		(uuid "780113bb-71e7-5031-b53b-0ab44145932e")
 		(at 60.296 275.429 90)
@@ -8742,17 +8742,6 @@
 		)
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
-		(fp_circle
-			(center 0 0)
-			(end 3 0)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "a3441e23-214f-5aef-a93b-d6a00166bf49")
-		)
 		(fp_circle
 			(center 0 0)
 			(end 2.6 0)

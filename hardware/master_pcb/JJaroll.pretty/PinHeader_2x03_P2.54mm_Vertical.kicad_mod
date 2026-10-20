@@ -6,7 +6,7 @@
 	(descr "Through hole straight pin header, 2x03, 2.54mm pitch, double rows")
 	(tags "Through hole pin header THT 2x03 2.54mm double row")
 	(property "Reference" "REF**"
-		(at 1.269999 -2.33 26.2)
+		(at 1.269999 -2.33)
 		(layer "F.SilkS")
 		(uuid "3ea68e15-56f4-5f9b-88b7-425e55699a84")
 		(effects
@@ -17,7 +17,7 @@
 		)
 	)
 	(property "Value" "Conn_02x03_Odd_Even"
-		(at 1.27 7.41 26.2)
+		(at 1.27 7.41)
 		(layer "F.Fab")
 		(uuid "db1880eb-6d07-529c-b236-e453331ef7f8")
 		(effects
@@ -28,7 +28,7 @@
 		)
 	)
 	(property "Datasheet" ""
-		(at 0 0 26.2)
+		(at 0 0)
 		(layer "F.Fab")
 		(hide yes)
 		(uuid "87b2290a-d677-570a-b063-e40226bf6f44")
@@ -39,7 +39,7 @@
 		)
 	)
 	(property "Description" ""
-		(at 0 0 26.2)
+		(at 0 0)
 		(layer "F.Fab")
 		(hide yes)
 		(uuid "d68e251a-a0ce-5665-8ed8-443ab94fa4fb")
@@ -223,7 +223,7 @@
 		(uuid "e49352a2-86dc-5acd-86ec-7ad0a32d364c")
 	)
 	(fp_text user "${REFERENCE}"
-		(at 1.27 2.54 116.2)
+		(at 1.27 2.54 90)
 		(layer "F.Fab")
 		(uuid "25982abd-45e5-5d11-93c2-5fd42fd092c2")
 		(effects
@@ -234,7 +234,7 @@
 		)
 	)
 	(pad "1" thru_hole rect
-		(at 0 0 26.2)
+		(at 0 0)
 		(size 1.7 1.7)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -242,7 +242,7 @@
 		(uuid "bb49dadf-f810-5ecc-a7c8-03413cb99ac8")
 	)
 	(pad "2" thru_hole oval
-		(at 2.54 0 26.2)
+		(at 2.54 0)
 		(size 1.7 1.7)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -250,7 +250,7 @@
 		(uuid "afd2ee2d-c9f0-5438-8eb6-1e041cb3610b")
 	)
 	(pad "3" thru_hole oval
-		(at 0 2.54 26.2)
+		(at 0 2.54)
 		(size 1.7 1.7)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -258,7 +258,7 @@
 		(uuid "07cc9083-6191-59bd-b56a-52759d1eaa97")
 	)
 	(pad "4" thru_hole oval
-		(at 2.54 2.54 26.2)
+		(at 2.54 2.54)
 		(size 1.7 1.7)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -266,7 +266,7 @@
 		(uuid "28a201d6-3d6e-50b2-990c-3633e24c853b")
 	)
 	(pad "5" thru_hole oval
-		(at 0 5.080001 26.2)
+		(at 0 5.080001)
 		(size 1.7 1.7)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -274,7 +274,7 @@
 		(uuid "a64d0177-bfbf-51da-a4e9-6b14d9e08ceb")
 	)
 	(pad "6" thru_hole oval
-		(at 2.54 5.08 26.2)
+		(at 2.54 5.08)
 		(size 1.7 1.7)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")

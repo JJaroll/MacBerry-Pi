@@ -5,7 +5,7 @@
 	(layer "F.Cu")
 	(descr "Modulo amplificador PAM8403 2x3W soldado directo a la placa (medidas estimadas de foto: verificar)")
 	(property "Reference" "REF**"
-		(at 0 -14 0)
+		(at 0 -14 180)
 		(layer "F.SilkS")
 		(uuid "1dc7d08d-f6b4-59f8-a49b-e9cd70559a8a")
 		(effects
@@ -16,7 +16,7 @@
 		)
 	)
 	(property "Value" "PAM8403 (modulo 19.05x22.86 mm, pines 2.54)"
-		(at 0 14 0)
+		(at 0 14 180)
 		(layer "F.Fab")
 		(uuid "a44d5b1b-3e3b-5c43-bd32-0d292a389d11")
 		(effects
@@ -27,7 +27,7 @@
 		)
 	)
 	(property "Datasheet" ""
-		(at 0 0 0)
+		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
 		(uuid "cb6cff10-0289-5050-b38e-c4f4ddfd205d")
@@ -39,7 +39,7 @@
 		)
 	)
 	(property "Description" ""
-		(at 0 0 0)
+		(at 0 0 180)
 		(layer "F.Fab")
 		(hide yes)
 		(uuid "56230c9c-d69d-5050-b46d-f0b93d46fde5")
@@ -86,7 +86,7 @@
 		(uuid "0e9b70d4-8818-5d58-a9c5-af8d8725f0a7")
 	)
 	(fp_text user "5V +  -"
-		(at 6 6.6 180)
+		(at 6 6.6)
 		(layer "F.SilkS")
 		(uuid "5936d722-2408-5b58-ac32-6e6072a0c24e")
 		(effects
@@ -97,7 +97,7 @@
 		)
 	)
 	(fp_text user "R OUT"
-		(at 7 -6.2 180)
+		(at 7 -6.2)
 		(layer "F.SilkS")
 		(uuid "d5b3bf8d-1474-5b7c-8e98-292499b8f746")
 		(effects
@@ -108,7 +108,7 @@
 		)
 	)
 	(fp_text user "+  -"
-		(at 7 -8.4 180)
+		(at 7 -8.4)
 		(layer "F.SilkS")
 		(uuid "e61b6fa5-c2bc-5b02-8d06-ab5af5e58c30")
 		(effects
@@ -119,7 +119,7 @@
 		)
 	)
 	(fp_text user "L GND R"
-		(at -5.6 6.6 180)
+		(at -5.6 6.6)
 		(layer "F.SilkS")
 		(uuid "e1dbf99c-5836-5db8-9a4a-be2c667f5890")
 		(effects
@@ -130,7 +130,7 @@
 		)
 	)
 	(fp_text user "L OUT"
-		(at -7 -6.2 180)
+		(at -7 -6.2)
 		(layer "F.SilkS")
 		(uuid "e4fd6c4d-f220-5afe-9044-327a520d8701")
 		(effects
@@ -141,7 +141,7 @@
 		)
 	)
 	(fp_text user "-  +"
-		(at -7 -8.4 180)
+		(at -7 -8.4)
 		(layer "F.SilkS")
 		(uuid "c2deb063-5042-532a-9dd9-9a6a27ea9d0e")
 		(effects
@@ -152,7 +152,7 @@
 		)
 	)
 	(fp_text user "Modulo PAM8403 se suelda aqui (pines 2.54)"
-		(at 0 0 180)
+		(at 0 0)
 		(layer "F.Fab")
 		(uuid "50854e95-d0d9-53c9-9bed-1131f5f31a98")
 		(effects
@@ -163,7 +163,7 @@
 		)
 	)
 	(pad "1" thru_hole rect
-		(at -8.255 -10.16 180)
+		(at -8.255 -10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -171,7 +171,7 @@
 		(uuid "0ad51c0e-d3db-5eb1-b324-3253238039a6")
 	)
 	(pad "2" thru_hole circle
-		(at -5.715 -10.16 180)
+		(at -5.715 -10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -179,7 +179,7 @@
 		(uuid "b8af6ce5-f4ea-51b9-8768-dae175921396")
 	)
 	(pad "3" thru_hole circle
-		(at 5.715 -10.16 180)
+		(at 5.715 -10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -187,7 +187,7 @@
 		(uuid "35f09fad-a669-583d-99e7-69aad7a8c0aa")
 	)
 	(pad "4" thru_hole circle
-		(at 8.255 -10.16 180)
+		(at 8.255 -10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -195,7 +195,7 @@
 		(uuid "36fb21fe-0532-5d85-b363-c4bb0816e9eb")
 	)
 	(pad "5" thru_hole circle
-		(at -8.255 10.16 180)
+		(at -8.255 10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -203,7 +203,7 @@
 		(uuid "92890d30-8060-59ed-b881-1ca7a8b23449")
 	)
 	(pad "6" thru_hole circle
-		(at -5.715 10.16 180)
+		(at -5.715 10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -211,7 +211,7 @@
 		(uuid "1a54870d-708f-5f00-b660-6ffae3093670")
 	)
 	(pad "7" thru_hole circle
-		(at -3.175 10.16 180)
+		(at -3.175 10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -219,7 +219,7 @@
 		(uuid "186dfd89-1154-5f5b-b90d-421237813a43")
 	)
 	(pad "8" thru_hole circle
-		(at 5.715 10.16 180)
+		(at 5.715 10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
@@ -227,7 +227,7 @@
 		(uuid "8df4dd3a-63ba-5da2-9219-c1e10b076255")
 	)
 	(pad "9" thru_hole circle
-		(at 8.255 10.16 180)
+		(at 8.255 10.16)
 		(size 1.8 1.8)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
