@@ -19,18 +19,18 @@ El **master** es la placa grande con la forma de la 820-1131-A. Las 3 placas ori
 - Holgura mínima de lo nuevo contra otras redes: 0,254 mm (regla 0,2 mm).
 - Distancia mínima al borde: 0,70 mm. Terminales dentro del master, a ≥ 2,45 mm del borde o bolsillo.
 - GND: 156 pads y vías en un solo grupo, 147 vías de cosido cada 12 mm.
-- **No se ejecutó DRC ni se abrió en KiCad.**
+- **DRC ejecutado en KiCad 10: 0 violaciones** (ver la sección «DRC»). Falta solo la verificación en hardware.
 
 ## Archivos
 - `PCB_imac_unificado_master_v5.kicad_pcb` (hueco Pi marcado en silk, con 4 agujeros M2.5 opcionales).
 - `PCB_imac_unificado_master_v5_con_corte.kicad_pcb` (hueco Pi recortado; base del Gerber).
 - `PCB_imac_unificado_master_v5_placa_vacia.kicad_pcb`: contorno, tornillos y bolsillos.
-- `PCB_imac_unificado_master_v5_gerber.zip` + vistas superior/inferior.
+- `PCB_imac_unificado_master_v5_con_corte_gerber.zip` (Gerbers + taladros) y vistas superior/inferior, generados desde la versión vigente.
 - `PCB_imac_unificado_master_v5_contorno_1a1.dxf` / `.svg` (capas: contorno, bolsillos, placas individuales de referencia, tornillos, hueco Pi, pads de terminales).
 - Visores en `../visores/` (3D de las PCB y mapa de cableado con y sin master).
 
 ## Antes de fabricar
-1. Abre en KiCad, rellena zonas y ejecuta DRC.
+1. Hecho: DRC limpio con zonas rellenas y Gerbers generados. Sube el ZIP a tu fabricante y revisa su vista previa antes de pagar.
 2. Verifica los terminales contra las borneras reales: la dirección de entrada del cable y el paso (5,00 mm) dependen del modelo exacto.
 3. Comprueba que J22 al pasar a 90° sigue alineada con el frontal del iMac (era 88,01° en `montaje-pcb.json`, que no se modificó).
 4. Cada placa individual conserva sus tornillos; los bolsillos solo dan holgura y alineación.
@@ -65,3 +65,7 @@ Las 15 huellas de la placa se pasaron a una biblioteca propia, `JJaroll.pretty/`
 ### DRC, tercera pasada (2026-10-20)
 
 Con la biblioteca `JJaroll` instalada: 0 errores, 0 pads sin conectar, 0 errores de huellas y 7 avisos `lib_footprint_mismatch` (6 huellas rotadas y `H_BASE_B`). Causa: las huellas rotadas se habían guardado en la biblioteca con los ángulos del tablero (que incluyen la rotación de la pieza) y `H_BASE_B` tenía un círculo de serigrafía que `H_BASE_A` no tiene. Corrección: la biblioteca se regeneró con los ángulos normalizados, el segundo bloque de 10 pines (`T_J22_J2`) usa su propia huella `..._J22` porque su texto y serigrafía difieren de `T_DC_J1`, y se quitó el círculo de `H_BASE_B`. Pendiente confirmar con una nueva pasada del DRC; si algún aviso `lib_footprint_mismatch` persiste, es inocuo y se puede poner en «Ignorar».
+
+### Resultado final
+
+Tras regenerar la biblioteca, KiCad 10 reporta **0 violaciones, 0 pads sin conectar y 0 errores de huellas**. Los Gerbers se generaron con zonas rellenas; el QR se decodifica desde la capa de serigrafía como `HTTPS://GITHUB.COM/JJAROLL/MACBERRY-PI`, y los taladros coinciden con el diseño (132 vías de 0,4 mm, 26 agujeros de 1,0 mm, 30 de 1,3 mm y 2 NPTH de 3,0 mm).
