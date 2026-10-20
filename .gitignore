@@ -4,3 +4,4 @@ __MACOSX/
 *-backups/
 *-bak
 *.lck
+__pycache__/
