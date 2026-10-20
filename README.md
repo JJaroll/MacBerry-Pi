@@ -48,9 +48,10 @@ Macberri Pi/
 | [`visores/visor3d_pcbs.html`](visores/visor3d_pcbs.html) | **Todo en 3D**: master con las 3 placas en sus bolsillos, la Pi 5 con su case, cables cortos, rutas, logos y despiece |
 | [`visores/cableado_sin_master.html`](visores/cableado_sin_master.html) | **Sistema de cables sin master**: 19 cables punto a punto entre placas, amplificador y GPIO de la Pi |
 | [`visores/cableado_con_master.html`](visores/cableado_con_master.html) | **Sistema con master**: 20 rutas de cobre y cables cortos entre cada bornera y su terminal |
-| [`visores/visor3d_stl.html`](visores/visor3d_stl.html) | **Visor de STL**: master y placas individuales, soporte de la Pi, despiece, opacidad y arrastrar-y-soltar |
+| [`visores/visor_inner_bezel.html`](visores/visor_inner_bezel.html) | **Visor STL del inner bezel**: las 17 piezas embebidas, ensamblaje, vista explosionada, orden de montaje, cotas, medidas, piezas con soportes sobre la cama y descarga en .zip |
+| [`visores/visor3d_stl.html`](visores/visor3d_stl.html) | **Visor STL de placas**: master y placas individuales, soporte de la Pi, opacidad y arrastrar-y-soltar |
 
-Funcionan con doble clic y sin internet (three.js va incrustado). Solo las tipografías vienen de Google Fonts; sin conexión se usa la del sistema. Para que el visor STL cargue también el bisel (`stl/bezel/`), sirve la carpeta (`python3 -m http.server`, o GitHub Pages) y abre `http://localhost:8000/visores/visor3d_stl.html`.
+Funcionan con doble clic y sin internet (three.js y los STL van incrustados). Solo las tipografías de algunos visores vienen de Google Fonts; sin conexión se usa la del sistema.
 
 ## Placas individuales o master
 

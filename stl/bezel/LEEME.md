@@ -40,5 +40,4 @@ descarga correcto antes de manipularlo. Úsalo bajo tu propia responsabilidad.
 
 ## Visor
 
-`../../visores/visor3d_stl.html` carga estos STL automáticamente cuando se abre desde el repositorio clonado
-(necesita servir los archivos, p. ej. `python3 -m http.server`; los navegadores bloquean `fetch` desde `file://`).
+[`../../visores/visor_inner_bezel.html`](../../visores/visor_inner_bezel.html) muestra estas piezas en 3D (ensamblaje, vista explosionada, orden de montaje, cotas, medidas y versión con soportes). Es un solo HTML con los STL incrustados: se abre con doble clic, sin internet ni servidor.
