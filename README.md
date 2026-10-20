@@ -1,5 +1,15 @@
 # MacBerry Pi G3 · en español
 
+[![Licencia: LGPL-3.0](https://img.shields.io/badge/licencia-LGPL--3.0-blue)](LICENSE)
+[![Bezel: CC BY-NC 4.0](https://img.shields.io/badge/stl%2Fbezel-CC%20BY--NC%204.0-lightgrey)](stl/bezel/LEEME.md)
+[![Hardware abierto](https://img.shields.io/badge/hardware-abierto-brightgreen)](hardware)
+[![KiCad 10](https://img.shields.io/badge/KiCad-10-314cb0?logo=kicad&logoColor=white)](hardware)
+[![Raspberry Pi 5](https://img.shields.io/badge/Raspberry%20Pi-5-c51a4a?logo=raspberrypi&logoColor=white)](docs/guia_cableado_pi5.md)
+[![iMac G3 slot loading](https://img.shields.io/badge/iMac%20G3-slot%20loading%20(M5521)-9aa0a6?logo=apple&logoColor=white)](docs/guia_macberry_pi.md)
+[![Idioma: español](https://img.shields.io/badge/idioma-espa%C3%B1ol-yellow)](README.md)
+[![Último commit](https://img.shields.io/github/last-commit/JJaroll/MacBerry-Pi)](https://github.com/JJaroll/MacBerry-Pi/commits/master)
+[![Estrellas](https://img.shields.io/github/stars/JJaroll/MacBerry-Pi?style=flat)](https://github.com/JJaroll/MacBerry-Pi/stargazers)
+
 Convierte un **iMac G3 DV (slot loading)** en un equipo moderno: una **Raspberry Pi 5** dentro de la carcasa que usa el **tubo CRT original como monitor VGA**, con sus altavoces y su botón de encendido. Reversible: no hay que cortar nada del iMac.
 
 Este repositorio reúne **la documentación en español**, las **tres placas del proyecto original traducidas**, un **PCB master unificado** que reemplaza el cableado entre ellas, y **visores 3D** (HTML autónomo y STL) para revisarlo todo sin instalar nada.
