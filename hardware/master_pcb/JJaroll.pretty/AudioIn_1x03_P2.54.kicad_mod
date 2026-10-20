@@ -1,0 +1,124 @@
+(footprint "AudioIn_1x03_P2.54"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Cabecera 1x3 para el cable 3.5 mm del adaptador")
+	(property "Reference" "REF**"
+		(at 2.54 -4.5 0)
+		(layer "F.SilkS")
+		(uuid "b3c7d3c4-2b16-501d-9370-48fe5b94ce81")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Entrada audio L/GND/R"
+		(at 2.54 5 0)
+		(layer "F.Fab")
+		(uuid "e8cf5f6e-9ad7-581c-9f80-7310c87b632c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4fbaf898-9226-58c0-9c01-59770ab4ca6c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3d577da5-cfe0-5dc2-93fb-00d5dfee27a4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -1.4 -1.4)
+		(end 6.5 1.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "f12d154d-6e1d-5f64-9e06-8e23e568f194")
+	)
+	(fp_rect
+		(start -1.6 -1.6)
+		(end 6.7 1.6)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "82cd502d-a7cb-5d23-aee9-f9c642585dd5")
+	)
+	(fp_text user "L  GND  R"
+		(at 2.54 -2.8 0)
+		(layer "F.SilkS")
+		(uuid "b4d5f453-d99a-5fa0-9885-d0eb380080f5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "AUDIO IN"
+		(at 2.54 3 0)
+		(layer "F.SilkS")
+		(uuid "c12434ed-3566-5912-970d-7386f8b02e63")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a9e98660-c0c7-5941-bb29-384157cd3625")
+	)
+	(pad "2" thru_hole circle
+		(at 2.54 0)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d297f74c-3211-5026-abc8-2b1b1bdce99f")
+	)
+	(pad "3" thru_hole circle
+		(at 5.08 0)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "99303920-6743-5426-9aa5-0b6ac831735d")
+	)
+	(embedded_fonts no)
+)

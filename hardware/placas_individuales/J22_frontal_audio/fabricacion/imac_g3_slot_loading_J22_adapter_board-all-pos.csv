@@ -1,0 +1,9 @@
+Ref,Val,Package,PosX,PosY,Rot,Side
+"J1","Conn_02x13_Odd_Even","PinHeader_2x13_P2.54mm_Vertical",161.544000,-91.948000,90.000000,bottom
+"C1","1uF","CP_Radial_D4.0mm_P1.50mm",167.790000,-90.140000,90.000000,top
+"J2","Screw_Terminal_01x10","TerminalBlock_Phoenix_PT-1,5-10-5.0-H_1x10_P5.00mm_Horizontal",109.702000,-106.708000,0.000000,top
+"J3","AudioJack3","Jack_3.5mm_CUI_SJ1-3533NG_Horizontal_CircularHoles",165.582000,-110.518000,180.000000,top
+"J4","Conn_02x03_Odd_Even","PinHeader_2x03_P2.54mm_Vertical",123.672000,-94.008000,0.000000,top
+"R1","220","R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",136.372000,-97.818000,0.000000,top
+"R2","220","R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",149.072000,-97.818000,0.000000,top
+"R3","2.2k","R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",161.290000,-95.640000,0.000000,top

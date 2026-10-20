@@ -1,0 +1,13 @@
+"Id";"Identificador";"Huella";"Cantidad";"Identificación";"Suministrador y ref";
+1;"C1, C2";"C_Disc_D5.0mm_W2.5mm_P5.00mm";2;"22pF";;;
+2;"C3";"CP_Radial_D8.0mm_P3.50mm";1;"470uF";;;
+3;"D1, D2";"D_DO-41_SOD81_P7.62mm_Horizontal";2;"D_Schottky_ALT";;;
+4;"J1";"TerminalBlock_Phoenix_PT-1,5-6-5.0-H_1x06_P5.00mm_Horizontal";1;"Screw_Terminal_01x06";;;
+5;"J2";"PinHeader_2x10_P2.54mm_Vertical";1;"Conn_02x10_Odd_Even";;;
+6;"J3, J5";"PinHeader_2x03_P2.54mm_Vertical";2;"Conn_02x03_Odd_Even";;;
+7;"J4";"DSUB-15-HD_Female_Horizontal_P2.29x1.98mm_EdgePinOffset8.35mm_Housed_MountingHolesOffset10.89mm";1;"DB15_Female_HighDensity";;;
+8;"R1, R2, R3";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";3;"10k";;;
+9;"R4";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"220";;;
+10;"U1";"DIP-28_W7.62mm";1;"ATmega328-PU";;;
+11;"U2";"DIP-8_W7.62mm";1;"LCC110";;;
+12;"Y1";"Crystal_HC49-U_Vertical";1;"Crystal";;;

@@ -1,0 +1,5 @@
+Ref,Val,Package,PosX,PosY,Rot,Side
+"J1","Screw_Terminal_01x10","TerminalBlock_Phoenix_PT-1,5-10-5.0-H_1x10_P5.00mm_Horizontal",173.462000,-69.690000,180.000000,top
+"J2","Screw_Terminal_01x04","TerminalBlock_Phoenix_PT-1,5-4-5.0-H_1x04_P5.00mm_Horizontal",117.462000,-69.690000,180.000000,top
+"J7","Conn_02x12_Top_Bottom","Molex_Micro-Fit_3.0_43045-2400_2x12_P3.00mm_Horizontal",150.882000,-80.270000,180.000000,top
+"M1","Fan_Tacho_PWM","FanPinHeader_1x04_P2.54mm_Vertical",164.462000,-78.690000,-90.000000,top

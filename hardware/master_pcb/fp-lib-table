@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "JJaroll")(type "KiCad")(uri "${KIPRJMOD}/JJaroll.pretty")(options "")(descr "Huellas del master MacBerry Pi G3 (JJaroll.dev)"))
+)
