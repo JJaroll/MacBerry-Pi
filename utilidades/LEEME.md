@@ -5,3 +5,5 @@
 Traducción de su LEEME: [`../docs/traducciones/ImacG3DVDisplayProperties_LEEME_es.txt`](../docs/traducciones/ImacG3DVDisplayProperties_LEEME_es.txt) y captura en `captura_utilidad_ajuste_LEEME_es.txt`.
 
 **generar_ibom/**: genera el BOM interactivo (iBOM) en español de las cuatro placas desde sus `.kicad_pcb`, sin KiCad. Ver [`generar_ibom/LEEME.md`](generar_ibom/LEEME.md).
+
+**expandir_mascara.py**: expande las aperturas de un Gerber de máscara de soldadura en N mm por lado (equivale a la *Expansión de máscara* de KiCad). Uso: `python3 utilidades/expandir_mascara.py 0.051 *_Mask.gbr` (requiere `pip install shapely`). Modifica los archivos en su lugar.
