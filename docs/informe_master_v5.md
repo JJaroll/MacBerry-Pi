@@ -22,7 +22,6 @@ El **master** es la placa grande con la forma de la 820-1131-A. Las 3 placas ori
 - **DRC ejecutado en KiCad 10: 0 violaciones** (ver la sección «DRC»). Falta solo la verificación en hardware.
 
 ## Archivos
-- `PCB_imac_unificado_master_v5.kicad_pcb` (hueco Pi marcado en silk, con 4 agujeros M2.5 opcionales).
 - `PCB_imac_unificado_master_v5_con_corte.kicad_pcb` (hueco Pi recortado; base del Gerber).
 - `PCB_imac_unificado_master_v5_placa_vacia.kicad_pcb`: contorno, tornillos y bolsillos.
 - `PCB_imac_unificado_master_v5_con_corte_gerber.zip` (Gerbers + taladros) y vistas superior/inferior, generados desde la versión vigente.
@@ -38,10 +37,9 @@ El **master** es la placa grande con la forma de la 820-1131-A. Las 3 placas ori
 6. Sigue yendo por cable: Pi ↔ adaptador HDMI→VGA, adaptador → `J_AUDIO_IN`, GPIO restante, y bornes de J20 sin destino.
 
 ## Logos en serigrafía (F.SilkS)
-Huellas independientes de serigrafía: `LOGO_AVATAR`, `LOGO_LORO`, `LOGO_TEXTO` y `LOGO_QR` (en `PCB_imac_unificado_master_v5_con_corte.kicad_pcb`; el origami se eliminó de esa versión y sigue en `PCB_imac_unificado_master_v5.kicad_pcb`). Para quitar una, selecciónala en KiCad y bórrala.
+Huellas independientes de serigrafía: `LOGO_AVATAR`, `LOGO_LORO`, `LOGO_TEXTO` y `LOGO_QR` (en `PCB_imac_unificado_master_v5_con_corte.kicad_pcb`). Para quitar una, selecciónala en KiCad y bórrala.
 - **Ilustración** (25,5 × 43,8 mm): tinta en las zonas claras; líneas, pelo y barba quedan sin tinta (verde). Sin el palo inferior.
 - **Loro** (21 × 34 mm): trazo mínimo 0,30 mm; el ojo es un punto macizo.
-- **Origami** (12,4 mm): icono Lucide.
 - **Texto** `jjaroll.dev`: fuente de KiCad, 4 mm, trazo 0,6 mm.
 - **QR** al repositorio `https://github.com/JJaroll/MacBerry-Pi` (en mayúsculas, modo alfanumérico, versión 2-M, módulos de 0,8 mm, 24,8 mm con zona de silencio; GitHub no distingue mayúsculas). Se decodificó correctamente desde el render de la serigrafía. Los módulos oscuros son el verde de la máscara y los claros son tinta.
 - Se retiraron 22 vías de cosido GND bajo los logos (quedan 125; el GND sigue en un solo grupo).
