@@ -33,16 +33,25 @@
   /* ---------- Asistente de plan ---------- */
   const CORTO = { ruta: "Unión de placas", alim: "Alimentación Pi 5", uart: "UART en la Pi", jack: "Audio del adaptador", usbad: "USB del adaptador", mic: "Micrófono del chasis", ambar: "LED ámbar", fan: "Ventilador", bezel: "Bisel interior" };
   const optOf = q => q.op.find(o => o.v === S.cfg[q.k]) || q.op[0];
+  /* Siguiente paso visible y sin marcar, después de `desde`; si no hay, el primero pendiente; si todo está hecho, inicio. */
+  function nextStep(desde) {
+    const lista = [];
+    M.FASES.forEach(f => { if (ok(f.si)) f.pasos.forEach(p => { if (ok(p.si)) lista.push([f.id, p.id]); }); });
+    const i0 = lista.findIndex(x => x[1] === desde);
+    const orden = lista.slice(i0 + 1).concat(lista.slice(0, Math.max(i0, 0)));
+    const n = orden.find(x => !S.h["s:" + x[1]]);
+    return n ? `#/fase/${n[0]}/${n[1]}` : "#/";
+  }
   W.plan = () => {
     const Q = M.PLAN, i = S.planPaso;
     if (S.planOk || i >= Q.length) {
       let ocultos = 0; M.FASES.forEach(f => { if (!ok(f.si)) ocultos += f.pasos.length; else ocultos += f.pasos.filter(p => !ok(p.si)).length; });
-      const nx = (() => { for (const f of M.FASES) { if (!ok(f.si)) continue; for (const p of f.pasos) if (ok(p.si) && !S.h["s:" + p.id]) return `#/fase/${f.id}/${p.id}`; } return "#/"; })();
+      const nx = nextStep("0.3");
       const ncab = M.CABLES.filter(c => (c.ruta === "ambas" || c.ruta === S.cfg.ruta) && ok(c.si)).length;
       return `<div class="glass-card w"><h4>Tu plan <span class="badge ok">listo</span></h4>
         <div>${Q.map((q, k) => `<div class="sumrow"><span>${CORTO[q.k]}</span><span><strong>${esc(optOf(q).t)}</strong> <button class="btn sm" type="button" data-a="plan-edit" data-i="${k}">Cambiar</button></span></div>`).join("")}</div>
         <p class="muted" style="margin:0">Con este plan: <strong>${ncab}</strong> conexiones de cableado y <strong>${ocultos}</strong> paso(s) oculto(s).</p>
-        <div class="row"><a class="btn p" href="${nx}">Seguir con la guía ${ico("chev")}</a><button class="btn" type="button" data-a="plan-def">Usar valores recomendados</button></div></div>`;
+        <div class="row"><button class="btn p" type="button" data-a="plan-next" data-h="${nx}">Seguir con la guía ${ico("chev")}</button><button class="btn" type="button" data-a="plan-def">Usar valores recomendados</button></div></div>`;
     }
     const q = Q[i];
     return `<div class="glass-card w"><div class="row" style="justify-content:space-between"><span class="badge acc">Pregunta ${i + 1} de ${Q.length}</span><div class="dots" aria-hidden="true">${Q.map((_, k) => `<i class="${k <= i ? "on" : ""}"></i>`).join("")}</div></div>
@@ -285,6 +294,7 @@
       case "plan-set": { const q = M.PLAN.find(x => x.k === el.dataset.k); S.cfg[q.k] = q.op[+el.dataset.i].v; S.planPaso++; if (S.planPaso >= M.PLAN.length) S.planOk = true; save(); rr(); A.refreshNav(); break; }
       case "plan-back": S.planPaso = Math.max(0, (S.planOk ? M.PLAN.length : S.planPaso) - 1); S.planOk = false; save(); rr(); break;
       case "plan-edit": S.planPaso = +el.dataset.i; S.planOk = false; save(); rr(); break;
+      case "plan-next": { const h = el.dataset.h || "#/"; if (location.hash === h) { const id = h.split("/")[3]; const e2 = id && document.getElementById("paso-" + id); if (e2) e2.scrollIntoView({ block: "start" }); else window.scrollTo(0, 0); } else location.hash = h; break; }
       case "plan-def": S.cfg = Object.assign({}, M.DEF); S.planOk = true; S.planPaso = M.PLAN.length; save(); rr(); A.refreshNav(); break;
       case "jm": S.jmp[el.dataset.id] = +el.dataset.i; save(); rr(); break;
       case "cabf": S.cabF = el.dataset.v; rr(); break;
