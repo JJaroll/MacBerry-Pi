@@ -47,7 +47,7 @@ Muchos proyectos optan por vaciar por completo el chasis, retirar el tubo de ray
 > - Si no estás seguro de cómo manipular un monitor CRT de forma segura, busca asistencia técnica o mantén tus manos alejadas de la placa analógica superior.
 
 > [!WARNING]
-> **FRAGILIDAD EXTREMA DE LOS PLÁSTICOS:** Con más de dos décadas de antigüedad, el plástico interior (especialmente el bisel interior o *inner bezel*) es extremadamente quebradizo y puede romperse ante la mínima torsión. Desmonta el chasis con suavidad siguiendo el [Manual de Servicio de Apple](https://ifixit-documents.s3.amazonaws.com/fTxHsQ1oiAKmZfDC.pdf).
+> **FRAGILIDAD EXTREMA DE LOS PLÁSTICOS:** Con más de dos décadas de antigüedad, el plástico interior (especialmente el bisel interior o *inner bezel*) es extremadamente quebradizo y puede romperse ante la mínima torsión. Desmonta el chasis con suavidad siguiendo el [Manual de Servicio de Apple](https://www.ifixit.com/Document/OBF5tQG3oqWwfuaX/G3-Disassembly.pdf).
 
 > [!IMPORTANT]
 > **DESCARGA ELECTROSTÁTICA (ESD):** La electricidad estática de tus manos puede destruir los circuitos integrados y microcontroladores. Trabaja siempre sobre una superficie antiestática y conéctate a tierra.
@@ -63,7 +63,7 @@ Para que el CRT funcione fuera del sistema original de Apple, es necesario compr
 2. **Placa IVAD (Interactive Video Adjustment Device):** Es la pequeña placa de circuito impreso conectada directamente al cuello del tubo CRT. Controla los cátodos RGB, el enfoque, la polarización y la geometría del haz a través de comandos digitales I2C.
 3. **Placa Reductora (Down-Converter Board):** Conectada en la bandeja inferior. No es una fuente de alimentación completa conectada a la red; recibe 24/48 VAC de la placa analógica y genera los voltajes de corriente continua (+12V, +5V, +3.3V) para la placa base y los discos.
 
-![Placa Analógica](../originales/imagenes/analog_board.jpg "Placa Analógica y Placa IVAD con el CRT desmontado")
+![Placa Analógica](traducciones/imagenes/analog_board.jpg "Placa Analógica y Placa IVAD con el CRT desmontado")
 
 ### 3.2. Secuencia de Encendido Original
 1. **Modo de espera (Standby):** Al enchufar el iMac a la red eléctrica (110/220 VAC), la placa analógica se energiza parcialmente y entrega un voltaje residual (*trickle voltage*) de **5V DC** a través de la placa IVAD hacia el conector **J20**.
@@ -72,7 +72,7 @@ Para que el CRT funcione fuera del sistema original de Apple, es necesario compr
 4. **Inicialización por I2C:** La CPU/controlador del iMac envía una secuencia de comandos digitales por el bus **I2C** (direcciones `0x46` y `0x53`) a través de los pines 1 (SDA) y 2 (SCL) del conector J20 hacia la placa IVAD.
 5. **Apertura del vídeo:** Una vez inicializada la placa IVAD, el CRT "despierta" (emitiendo el característico sonido de desmagnetización y alta tensión) y queda listo para recibir las señales de vídeo analógicas RGB y sincronismos (HSync/VSync).
 
-![Enrutamiento de Energía](../originales/imagenes/logic_board_and_downconverter_board.jpg "Enrutamiento de energía a través de la placa base hacia la placa reductora")
+![Enrutamiento de Energía](traducciones/imagenes/logic_board_and_downconverter_board.jpg "Enrutamiento de energía a través de la placa base hacia la placa reductora")
 
 ---
 
@@ -80,8 +80,8 @@ Para que el CRT funcione fuera del sistema original de Apple, es necesario compr
 
 Al retirar la placa base (*logic board*) del chasis del iMac G3, quedan expuestos dos conectores clave que enlazan todo el sistema:
 
-![Conectores del Chasis](../originales/imagenes/connectors_and_boards.png "Diagrama de pines de los conectores J20 y J22")
-![Chasis Expuesto](../originales/imagenes/chassis.jpg "Chasis con la placa base retirada mostrando los conectores")
+![Conectores del Chasis](traducciones/imagenes/connectors_and_boards.png "Diagrama de pines de los conectores J20 y J22")
+![Chasis Expuesto](traducciones/imagenes/chassis.jpg "Chasis con la placa base retirada mostrando los conectores")
 
 ### Patillaje del Conector J20 (Vídeo, I2C y Control de Encendido)
 | Pin J20 | Función | Descripción / Destino |
@@ -129,7 +129,7 @@ Al retirar la placa base (*logic board*) del chasis del iMac G3, quedan expuesto
 
 Si decides realizar la conversión cableando directamente sin las placas PCB personalizadas, deberás construir un cable adaptador entre el conector **DE15 (VGA estándar)** y el conector **J20**.
 
-![Adaptador VGA](../originales/imagenes/vga_adapter.png "Esquema de conexiones del cable VGA al conector J20")
+![Adaptador VGA](traducciones/imagenes/vga_adapter.png "Esquema de conexiones del cable VGA al conector J20")
 
 ### Procedimiento para Fabricar el Cable:
 1. **Cortar un cable VGA de calidad:** Corta un extremo del cable dejando al menos uno de los núcleos de ferrita cilíndricos en el tramo útil.
@@ -144,7 +144,7 @@ Si decides realizar la conversión cableando directamente sin las placas PCB per
    - **Pin 12 DE15 (SDA EDID)** $\rightarrow$ Conectar a pin SDA del microcontrolador emulador de EDID.
    - **Pin 15 DE15 (SCL EDID)** $\rightarrow$ Conectar a pin SCL del microcontrolador emulador de EDID.
 
-![Arnés de Cables](../originales/imagenes/harness.jpg "Arnés manual para conectar a J20 durante pruebas")
+![Arnés de Cables](traducciones/imagenes/harness.jpg "Arnés manual para conectar a J20 durante pruebas")
 
 ---
 
@@ -215,7 +215,7 @@ El microcontrolador de la placa J20 realiza dos tareas fundamentales:
 #### Método 2: Grabación In-Circuit (ICSP) en la placa J20
 Puedes programar el microcontrolador directamente en la placa J20 conectando un Arduino Uno como programador ISP a la cabecera J3 (ISP):
 
-![Arduino ISP](../originales/imagenes/arduino_uno_isp.png "Conexión de Arduino Uno como ISP a la placa J20")
+![Arduino ISP](traducciones/imagenes/arduino_uno_isp.png "Conexión de Arduino Uno como ISP a la placa J20")
 
 ---
 
@@ -223,7 +223,7 @@ Puedes programar el microcontrolador directamente en la placa J20 conectando un 
 
 Para crear un sistema autónomo dentro de la carcasa del iMac, la **Raspberry Pi 4** se conecta a las placas J20 y J22:
 
-![Cableado Raspberry Pi](../originales/imagenes/raspberry_pi_wiring.png "Esquema de cableado completo con Raspberry Pi")
+![Cableado Raspberry Pi](traducciones/imagenes/raspberry_pi_wiring.png "Esquema de cableado completo con Raspberry Pi")
 
 ### 8.1. Configuración de Raspberry Pi OS
 1. Graba Raspberry Pi OS en una tarjeta MicroSD e inicia la Raspberry Pi con monitor externo.

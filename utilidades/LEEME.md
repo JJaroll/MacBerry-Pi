@@ -9,3 +9,5 @@ Traducción de su LEEME: [`../docs/traducciones/ImacG3DVDisplayProperties_LEEME_
 **expandir_mascara.py**: expande las aperturas de un Gerber de máscara de soldadura en N mm por lado (equivale a la *Expansión de máscara* de KiCad). Uso: `python3 utilidades/expandir_mascara.py 0.051 *_Mask.gbr` (requiere `pip install shapely`). Modifica los archivos en su lugar.
 
 **actualizar_tamanos_sitio.py**: regenera `sitio/js/tamanos.js` (tamaños de los archivos descargables que muestra la guía interactiva). Ejecútalo tras cambiar archivos listados en `sitio/js/datos_ref.js`: `python3 utilidades/actualizar_tamanos_sitio.py`.
+
+**traducir_imagenes.py**: genera las versiones en español de las imágenes del proyecto original en `docs/traducciones/imagenes/` (requiere `tesseract`, `pillow`, `opencv-python-headless`, `pytesseract`). Ver [`../docs/traducciones/imagenes/LEEME.md`](../docs/traducciones/imagenes/LEEME.md).

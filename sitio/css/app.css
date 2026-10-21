@@ -343,3 +343,5 @@ footer.pie { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--bo
 .chk, .alcard, .med, .w { min-width: 0; }
 .ck .tx, .chk b { overflow-wrap: anywhere; }
 .cod pre { white-space: pre; }
+
+.trad { color: var(--text-muted); font-style: italic; white-space: nowrap; }

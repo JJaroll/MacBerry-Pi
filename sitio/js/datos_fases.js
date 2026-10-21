@@ -11,13 +11,13 @@ MB.FASES = [
     { t: "w", w: "diagrama" },
     { t: "p", x: "El truco es que la placa de video del tubo ([[IVAD]]) solo funciona si cree que sigue conectada a la placa lógica de Apple. Tres placas adaptadoras hacen ese trabajo:" },
     { t: "lista", i: ["**Placa J20** · el cerebro: un ATmega inicializa el IVAD por I²C, lee el botón, enciende la CRT con un relé y recibe el VGA.", "**Placa J22** · panel frontal: botón, LEDs, parlantes, audífonos, micrófono y los 24 VAC.", "**Placa Down Converter** · breakout de la fuente original (PAV): entrega +3,3, +5 y +12 V en borneras."] },
-    { t: "img", s: IM + "imac_g3_adapter_boards.png", a: "Renderizado de las tres placas adaptadoras", p: "Las tres placas adaptadoras (renderizado KiCad del proyecto original)." },
+    { t: "img", s: MB.img("imac_g3_adapter_boards.png"), a: "Renderizado de las tres placas adaptadoras", p: "Las tres placas adaptadoras (renderizado KiCad del proyecto original)." },
     { t: "aviso", n: "info", x: "Las fotos de montajes reales que verás en esta guía son del **proyecto original** (qbancoffee / Rocky Hill). Las placas de este repositorio son las mismas, con serigrafía en español." },
     { t: "p", x: "Este proyecto es para iMac G3 **slot loading** (350–700 MHz). No se ha comprobado con otros modelos." }
   ] },
   { id: "0.2", t: "Seguridad: léelo antes de tocar nada", b: [
     { t: "aviso", n: "peligro", x: "**Alto voltaje.** El tubo CRT y la placa analógica pueden guardar hasta unos 25 000 V en el ánodo y en los condensadores, **incluso con el iMac desenchufado durante días**. Descarga siempre el tubo con una sonda a tierra antes de meter las manos. Si no sabes hacerlo con seguridad, busca a un técnico." },
-    { t: "aviso", n: "aviso", x: "**Plásticos frágiles.** El bisel interior de un iMac G3 tiene más de 20 años y se rompe con una mínima torsión. Desmonta con suavidad y sigue el [manual de servicio de Apple](https://ifixit-documents.s3.amazonaws.com/fTxHsQ1oiAKmZfDC.pdf)." },
+    { t: "aviso", n: "aviso", x: "**Plásticos frágiles.** El bisel interior de un iMac G3 tiene más de 20 años y se rompe con una mínima torsión. Desmonta con suavidad y sigue el [manual de servicio de Apple](https://www.ifixit.com/Document/OBF5tQG3oqWwfuaX/G3-Disassembly.pdf)." },
     { t: "aviso", n: "aviso", x: "**Estática ([[ESD]]).** Tus manos pueden destruir el ATmega y otros chips. Trabaja sobre una superficie antiestática y con pulsera a tierra." },
     { t: "aviso", n: "peligro", x: "**Con la CRT encendida** hay miles de voltios en el flyback y en el cable que va al tubo. No los toques nunca." },
     { t: "chk", id: "seg", tit: "Confirma antes de seguir", i: [["seg1", "Entiendo que el CRT guarda carga aunque esté desenchufado y que debo descargarlo antes de manipularlo."], ["seg2", "Tengo pulsera antiestática y una superficie de trabajo antiestática."], ["seg3", "Trabajaré con una sola mano cerca de la placa analógica."], ["seg4", "Voy a seguir el manual de servicio de Apple para desmontar, sin forzar los plásticos."], ["seg5", "Asumo el riesgo: lo hago bajo mi propia responsabilidad."]] }
@@ -51,34 +51,34 @@ MB.FASES = [
   ] },
   { id: "1.2", t: "Abre la carcasa", b: [
     { t: "p", x: "Sigue el **manual de servicio de Apple** («Take Apart») para retirar la carcasa y dejar la placa lógica accesible. Esta guía no lo reemplaza: cada paso del manual tiene sus precauciones." },
-    { t: "enlaces", i: [["Manual de servicio de Apple (PDF, iFixit)", "https://ifixit-documents.s3.amazonaws.com/fTxHsQ1oiAKmZfDC.pdf", "El procedimiento oficial de desarmado."]] },
+    { t: "enlaces", i: [["Manual de servicio de Apple: iMac DV, DV+ y DV SE (iFixit)", "https://www.ifixit.com/Document/OBF5tQG3oqWwfuaX/G3-Disassembly.pdf", "El procedimiento oficial de desarmado. iFixit puede pedirte iniciar sesión (es gratis) para ver todas las páginas."], ["Wiki del proyecto original: convertir el iMac en un monitor VGA", "https://github.com/qbancoffee/imac_g3_ivad_board_init/wiki/Convert-and-iMac-G3-slot-loader-into-a-standard-VGA-monitor", "En inglés. Explica el desarmado y la lógica del proyecto."]] },
     { t: "aviso", n: "aviso", x: "No fuerces ningún plástico. Si algo no sale, revisa si hay un tornillo o un clip antes de aplicar más fuerza." }
   ] },
   { id: "1.3", t: "Descarga el CRT", b: [
     { t: "aviso", n: "peligro", x: "**Este es el paso más peligroso de todo el proyecto.** Si no estás seguro, para aquí y pide ayuda a un técnico." },
-    { t: "img", s: IM + "analog_board.jpg", a: "Parte superior del iMac con la placa analógica y la placa IVAD", p: "La placa analógica (debajo del tubo), la placa IVAD (en el cuello) y la entrada de red. Foto del proyecto original." },
+    { t: "img", s: MB.img("analog_board.jpg"), a: "Parte superior del iMac con la placa analógica y la placa IVAD", p: "La placa analógica (debajo del tubo), la placa IVAD (en el cuello) y la entrada de red. Foto del proyecto original." },
     { t: "num", i: ["Con el iMac desenchufado, conecta el cable de tierra de una **sonda de descarga** (con mango aislado) al chasis metálico.", "Con **una sola mano**, desliza la punta de la sonda bajo la goma del ánodo del tubo y mantén el contacto hasta oír el chasquido de la descarga.", "Repite varias veces. No te fíes de «lleva días apagado»."] },
     { t: "chk", id: "descarga", tit: "Descarga del CRT", i: [["des1", "Descargué el tubo con una sonda a tierra, con una sola mano."], ["des2", "Repetí la descarga varias veces."], ["des3", "No toqué el ánodo ni el flyback con las manos."]] }
   ] },
   { id: "1.4", t: "Retira la placa lógica", b: [
     { t: "p", x: "Los conectores del chasis están debajo de la placa lógica. Hay que sacarla para llegar a ellos. El iMac apoyado sobre un costado deja ver la parte inferior:" },
-    { t: "img", s: IM + "chassis.jpg", a: "Chasis con la placa lógica retirada", p: "Parte inferior del iMac apoyado de lado: aquí se acoplan la placa lógica y la placa down converter. En la foto ya se retiraron. Se ven los conectores J22 y J20." },
+    { t: "img", s: MB.img("chassis.jpg"), a: "Chasis con la placa lógica retirada", p: "Parte inferior del iMac apoyado de lado: aquí se acoplan la placa lógica y la placa down converter. En la foto ya se retiraron. Se ven los conectores J22 y J20." },
     { t: "p", x: "La placa PAV (down converter) va acoplada a la placa lógica. Según el manual de Apple:" },
-    { t: "img", s: IM + "removing_down_converter_board.png", a: "Paso 6 del manual de Apple: separar la placa down converter", p: "Manual de Apple, paso 6: «Sujetando las placas, presiona el conector negro y separa la placa down converter de la placa lógica»." },
+    { t: "img", s: MB.img("removing_down_converter_board.png"), a: "Paso 6 del manual de Apple: separar la placa down converter", p: "Manual de Apple, paso 6: «Sujetando las placas, presiona el conector negro y separa la placa down converter de la placa lógica»." },
     { t: "aviso", n: "consejo", x: "Nota del manual al volver a montar la placa lógica: asegúrate de que el **cable de la antena no quede debajo** de la placa." },
-    { t: "img", s: IM + "logic_board_and_downconverter_board.jpg", a: "Enrutamiento de energía entre la placa analógica, la placa lógica y la down converter", p: "Cómo viaja la energía: 48 VAC desde la placa analógica, 5 V trickle por J20, y los rieles 3,3 / 5 / 12 V desde la down converter." }
+    { t: "img", s: MB.img("logic_board_and_downconverter_board.jpg"), a: "Enrutamiento de energía entre la placa analógica, la placa lógica y la down converter", p: "Cómo viaja la energía: 48 VAC desde la placa analógica, 5 V trickle por J20, y los rieles 3,3 / 5 / 12 V desde la down converter." }
   ] },
   { id: "1.5", t: "Reconoce J20, J22 y J7", b: [
     { t: "p", x: "Al retirar la placa lógica quedan a la vista estos conectores:" },
     { t: "tabla", c: ["Conector", "Pines", "Qué lleva"], f: [["J20", "20", "I²C del IVAD, video analógico RGB y sincronismos, 5 V trickle y señales de encendido"], ["J22", "26", "Botón, LEDs, parlantes, audífonos, micrófono y 24 VAC"], ["J7 (placa PAV)", "24", "Entrada de 24 VAC y salida de los rieles de la placa madre"]] },
-    { t: "img", s: IM + "connectors_and_boards.png", a: "Diagrama de pines de J20 y J22 y su ubicación en el chasis", p: "Los conectores J20 y J22, mirados desde la parte inferior del equipo (diagrama del proyecto original)." },
-    { t: "img", s: IM + "imac_g3_slot_loading_pav_board.png", a: "Conector J7 de la placa PAV y su relación con J22 y J20", p: "La placa PAV y su conector J7. Dos numeraciones: la Molex del esquemático (verde) y la de LG/Apple (negro)." },
+    { t: "img", s: MB.img("connectors_and_boards.png"), a: "Diagrama de pines de J20 y J22 y su ubicación en el chasis", p: "Los conectores J20 y J22, mirados desde la parte inferior del equipo (diagrama del proyecto original)." },
+    { t: "img", s: MB.img("imac_g3_slot_loading_pav_board.png"), a: "Conector J7 de la placa PAV y su relación con J22 y J20", p: "La placa PAV y su conector J7. Dos numeraciones: la Molex del esquemático (verde) y la de LG/Apple (negro)." },
     { t: "aviso", n: "aviso", x: "**Usa las tablas de «Pines» de este sitio**, verificadas contra KiCad. Las tablas de otras guías (incluida la primera versión traducida) pueden diferir: en J20 el RGB va en 17/15/13 y la sincronía en 9/11; en J22 los 24 VAC están en 23–26 y el botón en 17." },
     { t: "chk", id: "conect", tit: "Reconocimiento", i: [["con1", "Identifiqué los conectores J20 (20 pines) y J22 (26 pines) en el chasis."], ["con2", "Identifiqué el conector J7 de la placa PAV."], ["con3", "Sé dónde está el pin 1 de cada uno (anota o fotografía)."]] }
   ] },
   { id: "1.6", t: "Opcional: probar la CRT sin ninguna placa", b: [
     { t: "p", x: "Antes de gastar en placas puedes comprobar que tu CRT sirve. El método original usa un cable y una secuencia de inicialización:" },
-    { t: "img", s: IM + "crt_power_on_and_off.png", a: "Encendido y apagado de la CRT en J20", p: "Encender: unir con un cable los pines 6, 10 y 12 de J20 y enviar la inicialización. Apagar: desconectar el pin 6 (5 V trickle)." },
+    { t: "img", s: MB.img("crt_power_on_and_off.png"), a: "Encendido y apagado de la CRT en J20", p: "Encender: unir con un cable los pines 6, 10 y 12 de J20 y enviar la inicialización. Apagar: desconectar el pin 6 (5 V trickle)." },
     { t: "aviso", n: "peligro", x: "Con la CRT encendida hay **miles de voltios** en el flyback. No toques el tubo ni el cable que va hacia él." },
     { t: "p", x: "La inicialización la puede enviar un Arduino o una Raspberry Pi (ver «Extras → Camino sin PCBs»). Si no quieres complicarte, salta este paso: la placa J20 hará todo esto sola." }
   ] }
@@ -144,7 +144,7 @@ MB.FASES = [
   { id: "4.2", t: "Placa J20 (video y cerebro)", b: [
     { t: "imgs", i: [["sitio/img/placa_j20_sup.png", "Cara superior de la J20"], ["sitio/img/placa_j20_inf.png", "Cara inferior de la J20: header J2 y jumpers"]] },
     { t: "tabla", c: ["Ref.", "Componente"], f: [["R1, R2, R3", "10 kΩ"], ["R4", "220 Ω"], ["D1, D2", "1N5819 Schottky"], ["U1", "ATmega328P-PU (DIP-28) en zócalo"], ["U2", "Relé LCC110 (DIP-8) en zócalo"], ["C1, C2", "22 pF"], ["Y1", "Cristal 16 MHz HC49"], ["C3", "470 µF electrolítico"], ["J1", "Bornera de 6"], ["J3, J5", "Headers 2×3"], ["J4", "DB15 HD hembra, ángulo recto"], ["J2", "Header 2×10 (TSW-110-23-G-D), **cara inferior**"]] },
-    { t: "img", s: IM + "J20_board_installed.jpg", a: "Placa J20 instalada en el chasis", p: "Una placa J20 instalada en el chasis (proyecto original, Rev 2)." },
+    { t: "img", s: MB.img("J20_board_installed.jpg"), a: "Placa J20 instalada en el chasis", p: "Una placa J20 instalada en el chasis (proyecto original, Rev 2)." },
     { t: "p", x: "**Jumpers de la J20:** suelda JP1 y JP2 (EDID) y **JP3 (obligatorio)**. Te los explico con dibujos aquí:" },
     { t: "w", w: "jumpers", f: "J20" },
     { t: "chk", id: "j20s", tit: "J20 soldada", i: [["j20a", "Resistencias y diodos soldados (banda del diodo según la serigrafía)."], ["j20b", "Zócalos, condensadores y cristal soldados; C3 con la polaridad correcta."], ["j20c", "Bornera J1, headers J3 y J5 y el DB15 (J4) soldados."], ["j20d", "Header J2 soldado por la cara inferior."], ["j20e", "JP3 soldado (y JP1/JP2 si quieres EDID)."], ["j20f", "Revisé puentes de estaño y no hay corto entre +5 V y GND."]] }
@@ -152,14 +152,14 @@ MB.FASES = [
   { id: "4.3", t: "Placa J22 (frontal y audio)", b: [
     { t: "imgs", i: [["sitio/img/placa_j22_sup.png", "Cara superior de la J22"], ["sitio/img/placa_j22_inf.png", "Cara inferior de la J22: header J1 y jumpers del micrófono"]] },
     { t: "tabla", c: ["Ref.", "Componente"], f: [["R1, R2", "220 Ω (limitan los LEDs)"], ["J4", "Header 2×3 (audífonos)"], ["J2", "Bornera de 10"], ["J1", "Header 2×13 (929665-02-13-I), **cara inferior**"], ["C1, R3, J3, micrófono", "1 µF, 2,2 kΩ, jack 3,5 mm y electret AOM-5024L-HD-R: **solo con micrófono**"]] },
-    { t: "img", s: IM + "J22_board_installed.jpg", a: "Placa J22 instalada", p: "Placa J22 instalada (proyecto original)." },
+    { t: "img", s: MB.img("J22_board_installed.jpg"), a: "Placa J22 instalada", p: "Placa J22 instalada (proyecto original)." },
     { t: "w", w: "jumpers", f: "J22" },
     { t: "chk", id: "j22s", tit: "J22 soldada", i: [["j22a", "Resistencias, headers y bornera soldados."], ["j22b", "Header J1 soldado por la cara inferior."], ["j22c", "Micrófono y jumpers según tu plan (o sin montar)."], ["j22d", "Sin puentes de estaño ni cortos."]] }
   ] },
   { id: "4.4", t: "Placa Down Converter", b: [
     { t: "imgs", i: [["sitio/img/placa_dc_sup.png", "Cara superior del Down Converter"], ["sitio/img/placa_dc_inf.png", "Cara inferior del Down Converter"]] },
     { t: "tabla", c: ["Ref.", "Componente"], f: [["J7", "Molex Micro-Fit 43045-2400, 24 pines, ángulo recto (header de PCB)"], ["J1", "Bornera de 10"], ["J2", "Bornera de 4"], ["M1", "Header de 4 pines para ventilador (opcional)"]] },
-    { t: "img", s: IM + "down_converter_breakout_board.jpg", a: "Placa down converter breakout", p: "La placa breakout real (proyecto original). Las borneras verdes de la izquierda y arriba son J2 y J1." },
+    { t: "img", s: MB.img("down_converter_breakout_board.jpg"), a: "Placa down converter breakout", p: "La placa breakout real (proyecto original). Las borneras verdes de la izquierda y arriba son J2 y J1." },
     { t: "aviso", n: "aviso", x: "J7 es el **header de PCB** 43045-2400, no la carcasa 43020. Si compras la equivocada no encajará." },
     { t: "w", w: "jumpers", f: "Down Converter" },
     { t: "chk", id: "dcs", tit: "Down Converter soldada", i: [["dc1", "J7, J1 y J2 soldados y alineados."], ["dc2", "Header del ventilador y JP1 según tu plan (o sin montar)."], ["dc3", "Sin cortos entre +5 V, +12 V y GND en las borneras."]] }
@@ -196,7 +196,7 @@ MB.FASES = [
   { id: "5.4", t: "Método 2: grabar en la J20 por ISP (opcional)", b: [
     { t: "p", x: "Puedes programar el chip ya montado, usando un Arduino Uno con el sketch **ArduinoISP** conectado al header J3 de la J20:" },
     { t: "tabla", c: ["J3", "Señal", "Arduino Uno"], f: [["1", "MISO", "D12"], ["2", "5 V trickle", "no conectar"], ["3", "SCK", "D13"], ["4", "MOSI", "D11"], ["5", "RESET", "D10"], ["6", "GND", "GND"]] },
-    { t: "img", s: IM + "arduino_uno_isp.png", a: "Arduino Uno como programador ISP de la placa J20", p: "Conexión del Arduino Uno como ISP (proyecto original)." },
+    { t: "img", s: MB.img("arduino_uno_isp.png"), a: "Arduino Uno como programador ISP de la placa J20", p: "Conexión del Arduino Uno como ISP (proyecto original)." },
     { t: "aviso", n: "peligro", x: "El diagrama **no conecta 5 V**: la J20 se alimenta del 5 V trickle, con la placa instalada en el iMac **enchufado a la red**. Eso te obliga a trabajar junto a la placa analógica con red conectada. Si no te sientes cómodo, usa el método 1." },
     { t: "p", x: "En el IDE: Herramientas → Programador → «Arduino as ISP» y usa «Subir con programador»." }
   ] },
@@ -209,21 +209,21 @@ MB.FASES = [
 /* ======================= 6 ======================= */
 { id: 6, ico: "6", t: "Instalar las placas en el chasis", r: "Enchufar J20, J22 y la PAV, fijar con tornillos y decidir dónde va la Pi.", pasos: [
   { id: "6.1", t: "Mira cómo queda", b: [
-    { t: "img", s: IM + "all_boards_installed.jpg", a: "Todas las placas instaladas y cableadas en el chasis", p: "Las tres placas instaladas y cableadas (proyecto original)." },
-    { t: "img", s: IM + "J20_and_J22_in_view.jpg", a: "Placas J20 y J22 a la vista", p: "Las placas J20 y J22 en su sitio." }
+    { t: "img", s: MB.img("all_boards_installed.jpg"), a: "Todas las placas instaladas y cableadas en el chasis", p: "Las tres placas instaladas y cableadas (proyecto original)." },
+    { t: "img", s: MB.img("J20_and_J22_in_view.jpg"), a: "Placas J20 y J22 a la vista", p: "Las placas J20 y J22 en su sitio." }
   ] },
   { id: "6.2", t: "Enchufa la placa J20", b: [
     { t: "num", i: ["Toma el arnés J20 de 20 pines (el que venía de la placa analógica).", "Alinea el **pin 1** con la marca de la placa.", "Presiona a fondo y de forma pareja sobre el header J2 de la J20 (cara inferior)."] },
-    { t: "img", s: IM + "J20_board_installed.jpg", a: "Placa J20 instalada", p: "J20 instalada. El DB15 queda a la vista para el cable VGA." },
+    { t: "img", s: MB.img("J20_board_installed.jpg"), a: "Placa J20 instalada", p: "J20 instalada. El DB15 queda a la vista para el cable VGA." },
     { t: "aviso", n: "aviso", x: "Si el header queda girado 180° el arnés no hará nada útil, y podrías poner 5 V donde no toca. Revisa la orientación **dos veces**." }
   ] },
   { id: "6.3", t: "Enchufa la placa J22", b: [
     { t: "num", i: ["Toma el arnés J22 de 26 pines.", "Alinea el pin 1 y presiona a fondo sobre el header J1 de la J22 (cara inferior)."] },
-    { t: "img", s: IM + "J22_board_installed.jpg", a: "Placa J22 instalada", p: "J22 instalada con sus borneras a la vista." }
+    { t: "img", s: MB.img("J22_board_installed.jpg"), a: "Placa J22 instalada", p: "J22 instalada con sus borneras a la vista." }
   ] },
   { id: "6.4", t: "Conecta la placa PAV a la breakout", b: [
     { t: "p", x: "La placa PAV (la fuente original) se acopla a la placa Down Converter por J7, igual que antes se acoplaba a la placa lógica." },
-    { t: "img", s: IM + "down_converter_breakout_board_installed.jpg", a: "Placa down converter breakout instalada", p: "La breakout con la PAV encima, con sus borneras a la vista." },
+    { t: "img", s: MB.img("down_converter_breakout_board_installed.jpg"), a: "Placa down converter breakout instalada", p: "La breakout con la PAV encima, con sus borneras a la vista." },
     { t: "aviso", n: "consejo", x: "Presiona el conector negro de la PAV de forma pareja; no hagas palanca sobre los pines del Molex." }
   ] },
   { id: "6.5", t: "Fija con tornillos", b: [
@@ -250,7 +250,7 @@ MB.FASES = [
   { id: "7.2", t: "El cableado de tu montaje", b: [
     { t: "p", x: "Estas son las conexiones que corresponden a tu plan. Marca cada una al terminarla; abre la tarjeta para ver pines y notas." },
     { t: "w", w: "cables" },
-    { t: "img", s: IM + "basic_wiring.png", a: "Diagrama general de cableado básico", p: "Diagrama general de cableado del proyecto original." }
+    { t: "img", s: MB.img("basic_wiring.png"), a: "Diagrama general de cableado básico", p: "Diagrama general de cableado del proyecto original." }
   ] },
   { id: "7.3", t: "Mira el mapa de cableado", b: [
     { t: "p", x: "El visor interactivo muestra el mismo cableado sobre las placas." },
@@ -262,7 +262,7 @@ MB.FASES = [
   ] },
   { id: "7.5", t: "Audio", b: [
     { t: "lista", i: ["El adaptador entrega audio por su jack (o por un extractor HDMI).", "El **PAM8403** amplifica y sus salidas van a los parlantes originales por la J22.", "Las salidas del PAM8403 son BTL: **ningún «−» va a GND**.", "Si escuchas zumbido, une el GND de entrada y el del amplificador en un solo punto."] },
-    { t: "img", s: IM + "raspberry_pi_wiring.png", a: "Esquema de cableado de la Pi (Pi 4, proyecto original)", p: "Esquema original con Pi 4 (I²C directo). En esta guía el ATmega de la J20 hace la inicialización, así que **no** conectes el I²C de la Pi al cable J20." }
+    { t: "img", s: MB.img("raspberry_pi_wiring.png"), a: "Esquema de cableado de la Pi (Pi 4, proyecto original)", p: "Esquema original con Pi 4 (I²C directo). En esta guía el ATmega de la J20 hace la inicialización, así que **no** conectes el I²C de la Pi al cable J20." }
   ] },
   { id: "7.6", t: "Revisión antes de energizar", b: [
     { t: "chk", id: "antes", tit: "Antes de enchufar el iMac", i: [["an1", "ATmega programado con imacG3IvadInit (buffers a 128) y bien orientado en su zócalo."], ["an2", "Headers J2 de la J20 y J1 de la J22 soldados por la cara inferior y enchufados."], ["an3", "JP3 soldado en la J20 (apagado automático por VSYNC). En la J22, JP3 sin soldar."], ["an4", "Tornillos de montaje de las tres placas con continuidad a GND del chasis."], ["an5", "Sin corto entre +5 V y GND en la bornera J1 de la placa DC."], ["an6", "Salidas del amplificador cableadas sin unir ningún «−» a GND."], ["an7", "La Pi **no** está conectada todavía a los rieles."]] }
@@ -279,7 +279,7 @@ MB.FASES = [
     { t: "num", i: ["Con el iMac enchufado, pulsa y **suelta** el botón (el firmware actúa al soltar).", "Debes oír la CRT activarse (el chasquido/zumbido de alta tensión) y ver el **LED verde** encendido.", "Mide los rieles de la placa DC (paso anterior).", "Pulsa de nuevo para apagar: la CRT se apaga y el LED también."] },
     { t: "ok", x: "El LED verde se enciende al soltar el botón, la CRT hace su sonido y aparecen +3,3, +5 y +12 V en la bornera J1 de la placa DC." },
     { t: "fallo", x: "Si no pasa nada, ve a **Diagnóstico → «La CRT no enciende al pulsar el botón»**." },
-    { t: "img", s: IM + "analog_board_on.jpg", a: "Señal de la placa analógica encendida", p: "Osciloscopio con la placa analógica encendida (proyecto original)." }
+    { t: "img", s: MB.img("analog_board_on.jpg"), a: "Señal de la placa analógica encendida", p: "Osciloscopio con la placa analógica encendida (proyecto original)." }
   ] },
   { id: "8.3", t: "Prueba el +5 V con carga", b: [
     { t: "p", x: "Antes de conectar la Pi, comprueba que el riel de +5 V aguanta: conecta una **carga resistiva de potencia** que tire de una corriente parecida a la esperada (la Pi 5 puede pedir hasta 5 A) y mide con **MIN/MAX HOLD**: no debe bajar de **4,75 V**." },
@@ -341,7 +341,7 @@ MB.FASES = [
   ] },
   { id: "10.2", t: "Conectar para calibrar", b: [
     { t: "lista", i: ["**Desde la Pi** (si cableaste el UART): `screen /dev/ttyAMA0 115200`.", "**Con un adaptador USB-serie** (TTL, 5 V): TX/RX cruzados a J5 y GND a J3-6.", "**Con la utilidad Java** (`ImacG3DVDisplayProperties.jar`): panel gráfico con flechas por categoría."] },
-    { t: "img", s: IM + "wiring_usb_2_serial_debugger.jpg", a: "Adaptador USB a serie conectado a la J20", p: "Un adaptador USB-serie conectado a la J20 (proyecto original)." },
+    { t: "img", s: MB.img("wiring_usb_2_serial_debugger.jpg"), a: "Adaptador USB a serie conectado a la J20", p: "Un adaptador USB-serie conectado a la J20 (proyecto original)." },
     { t: "cod", l: "bash", x: "cd utilidades/ImacG3DVDisplayProperties/dist\njava -jar ImacG3DVDisplayProperties.jar" },
     { t: "enlaces", i: [["Vídeo: ajuste de parámetros con la GUI en Java", "https://youtu.be/zrzcvThxDeY", ""]] }
   ] },

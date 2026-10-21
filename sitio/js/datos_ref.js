@@ -428,6 +428,13 @@ MB.GLOSARIO = {
 };
 
 /* ---------- Descargas ---------- */
+/* Imágenes con versión en español (docs/traducciones/imagenes/); el resto usa el original. */
+MB.TRAD = new Set(["chassis.jpg", "logic_board_and_downconverter_board.jpg", "analog_board.jpg", "analog_board_off.jpg", "analog_board_on.jpg",
+  "J20_and_J22_in_view.jpg", "harness.jpg", "connectors_and_boards.png", "crt_power_on_and_off.png", "vga_adapter.png",
+  "imac_g3_slot_loading_pav_board.png", "arduino_uno_wiring.png", "arduino_uno_wiring_to_transmit_edid.png", "arduino_nano_wiring.png",
+  "arduino_nano_wiring_to_transmit_edid.png", "raspberry_pi_wiring.png", "arduino_uno_isp.png", "basic_wiring.png", "removing_down_converter_board.png"]);
+MB.img = n => (MB.TRAD.has(n) ? "docs/traducciones/imagenes/" : "originales/imagenes/") + n;
+
 MB.DESCARGAS = [
   { g: "Placas individuales (J20, J22, Down Converter)", d: "Gerber listo para fabricar, iBOM en español, esquemas y BOM de cada placa.", items: [
     { t: "J20 · Gerber", p: "hardware/placas_individuales/J20_video/fabricacion/imac_g3_333mhz_slot_loading_J20_adapter_board_es_gerber.zip", k: "gerber" },
@@ -482,6 +489,27 @@ MB.DESCARGAS = [
     { t: "Informe del PCB master v5", gh: "docs/informe_master_v5.md" },
     { t: "README del proyecto original (traducido)", gh: "docs/traducciones/README_proyecto_original_es.md" },
     { t: "Créditos y licencias", gh: "CREDITOS.md" }
+  ] },
+  { g: "Imágenes de la guía (traducidas al español)", d: "Versiones en español de los esquemas y fotos rotuladas del proyecto original. Los originales en inglés están en originales/imagenes/.", items: [
+    { t: "Chasis con los conectores J20 y J22", p: "docs/traducciones/imagenes/chassis.jpg" },
+    { t: "Placa lógica y down converter: rutas de alimentación", p: "docs/traducciones/imagenes/logic_board_and_downconverter_board.jpg" },
+    { t: "Placa analógica, IVAD y entrada de red", p: "docs/traducciones/imagenes/analog_board.jpg" },
+    { t: "Osciloscopio: apagado", p: "docs/traducciones/imagenes/analog_board_off.jpg" },
+    { t: "Osciloscopio: encendido", p: "docs/traducciones/imagenes/analog_board_on.jpg" },
+    { t: "J20 y J22 en el chasis", p: "docs/traducciones/imagenes/J20_and_J22_in_view.jpg" },
+    { t: "Arnés de pruebas", p: "docs/traducciones/imagenes/harness.jpg" },
+    { t: "Conectores del chasis e interruptor", p: "docs/traducciones/imagenes/connectors_and_boards.png" },
+    { t: "Encender y apagar la CRT", p: "docs/traducciones/imagenes/crt_power_on_and_off.png" },
+    { t: "Adaptador VGA", p: "docs/traducciones/imagenes/vga_adapter.png" },
+    { t: "Alimentación de la placa PAV", p: "docs/traducciones/imagenes/imac_g3_slot_loading_pav_board.png" },
+    { t: "Arduino Uno como monitor", p: "docs/traducciones/imagenes/arduino_uno_wiring.png" },
+    { t: "Arduino Uno y EDID", p: "docs/traducciones/imagenes/arduino_uno_wiring_to_transmit_edid.png" },
+    { t: "Arduino Nano como monitor", p: "docs/traducciones/imagenes/arduino_nano_wiring.png" },
+    { t: "Arduino Nano y EDID", p: "docs/traducciones/imagenes/arduino_nano_wiring_to_transmit_edid.png" },
+    { t: "Raspberry Pi como monitor", p: "docs/traducciones/imagenes/raspberry_pi_wiring.png" },
+    { t: "Arduino Uno como programador ISP", p: "docs/traducciones/imagenes/arduino_uno_isp.png" },
+    { t: "Cableado básico de las placas", p: "docs/traducciones/imagenes/basic_wiring.png" },
+    { t: "Manual de Apple: retirar el down converter", p: "docs/traducciones/imagenes/removing_down_converter_board.png" }
   ] }
 ];
 

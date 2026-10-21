@@ -23,7 +23,7 @@
   const norm = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   function link(t, u) {
     if (u.startsWith("#")) return `<a href="${u}">${t}</a>`;
-    return `<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
+    return `<a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`;
   }
   function fmt(s) {
     const codes = [];
@@ -82,7 +82,7 @@
   A.aviso = aviso;
   const ckb = (k, tx, extra) => `<label class="ck"><input type="checkbox" data-a="ck" data-k="${k}" ${S.h["c:" + k] ? "checked" : ""}><span class="bx">${ico("check")}</span><span class="tx">${fmt(tx)}${extra || ""}</span></label>`;
   A.ckb = ckb;
-  const fig = (s, a, p) => `<figure><img loading="lazy" src="${s}" alt="${esc(a)}" data-a="img" data-c="${esc(p || a)}"><figcaption>${fmt(p || "")}</figcaption></figure>`;
+  const fig = (s, a, p) => `<figure><img loading="lazy" src="${s}" alt="${esc(a)}" data-a="img" data-c="${esc(p || a)}"><figcaption>${fmt(p || "")}${s.includes("docs/traducciones/") ? ' <span class="trad">Traducida al español.</span>' : ""}</figcaption></figure>`;
   const tabla = (c, f) => `<div class="tw"><table><thead><tr>${c.map(x => `<th>${esc(x)}</th>`).join("")}</tr></thead><tbody>${f.map(r => `<tr>${r.map(x => `<td>${fmt(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   A.tabla = tabla; A.fig = fig;
   function blk(b) {
@@ -99,7 +99,7 @@
       case "tabla": return tabla(b.c, b.f);
       case "ok": return `<div class="okbox">${ico("check")}<div><strong>Así sabes que salió bien:</strong> ${fmt(b.x)}</div></div>`;
       case "fallo": return `<div class="failbox">${ico("warn")}<div><strong>Si no sale:</strong> ${fmt(b.x)}</div></div>`;
-      case "enlaces": return `<div class="links">${b.i.map(([t, h, d]) => `<a href="${h}" ${h.startsWith("#") ? "" : 'target="_blank" rel="noopener"'}>${ico(h.startsWith("#") ? "chev" : "ext")}<span><strong>${esc(t)}</strong>${d ? `<small>${esc(d)}</small>` : ""}</span></a>`).join("")}</div>`;
+      case "enlaces": return `<div class="links">${b.i.map(([t, h, d]) => `<a href="${h}" ${h.startsWith("#") ? "" : 'target="_blank" rel="noopener noreferrer"'}>${ico(h.startsWith("#") ? "chev" : "ext")}<span><strong>${esc(t)}</strong>${d ? `<small>${esc(d)}</small>` : ""}</span></a>`).join("")}</div>`;
       case "w": return A.W[b.w] ? A.W[b.w](b) : `<p class="muted">Widget «${esc(b.w)}» no disponible.</p>`;
       default: return "";
     }
@@ -181,7 +181,7 @@
       <nav class="nav" aria-label="Fases y herramientas"><a href="#/" class="${!r[0] || r[0] === "inicio" ? "on" : ""}"><span class="n">${ico("home")}</span>Inicio</a><h6>Guía paso a paso</h6>
       ${M.FASES.map(f => { const v = faseVis(f), p = pct(f); return `<a href="#/fase/${f.id}" class="${cur === f.id ? "on" : ""} ${p === 1 && v ? "done" : ""} ${v ? "" : "skip"}"><span class="n">${p === 1 && v ? ico("check") : f.id}</span>${esc(f.t)}<span class="pc">${v ? Math.round(p * 100) + "%" : "omitida"}</span></a>`; }).join("")}
       <h6>Herramientas</h6>${TOOLS.map(x => `<a href="#/t/${x.id}" class="${tid === x.id ? "on" : ""}"><span class="n">${ico("chev")}</span>${esc(x.t)}</a>`).join("")}</nav>
-      <div class="foot"><a href="${M.GH}" target="_blank" rel="noopener">Repositorio en GitHub ↗</a><button class="btn sm" type="button" data-a="reset">${ico("reset")} Reiniciar progreso</button><span>Licencia LGPL-3.0 · bisel CC BY-NC 4.0</span></div>`;
+      <div class="foot"><a href="${M.GH}" target="_blank" rel="noopener noreferrer">Repositorio en GitHub ↗</a><button class="btn sm" type="button" data-a="reset">${ico("reset")} Reiniciar progreso</button><span>Licencia LGPL-3.0 · bisel CC BY-NC 4.0</span></div>`;
   }
   const COL = ["blue", "green", "purple", "orange", "pink", "yellow"];
   function topHtml() {
@@ -193,8 +193,8 @@
       <button class="btn ic" type="button" data-a="imprimir" aria-label="Imprimir esta página">${ico("file")}</button>`;
   }
   function pie() {
-    return `<footer class="pie"><div>Basado en el proyecto original <a href="https://github.com/qbancoffee/imac_g3_ivad_board_init" target="_blank" rel="noopener">qbancoffee/imac_g3_ivad_board_init</a> (LGPL-3.0). Bisel interior de <a href="https://github.com/anthony-bernaert/imac-g3-screen-bezel" target="_blank" rel="noopener">Anthony Bernaert</a> (CC BY-NC 4.0, solo uso no comercial).</div>
-      <div>Traducción, pines verificados, PCB master y esta guía: <a href="https://jjaroll.dev" target="_blank" rel="noopener">JJaroll.dev</a>, con ayuda de Claude (Anthropic). Hazlo bajo tu propia responsabilidad: el CRT puede retener alto voltaje.</div></footer>`;
+    return `<footer class="pie"><div>Basado en el proyecto original <a href="https://github.com/qbancoffee/imac_g3_ivad_board_init" target="_blank" rel="noopener noreferrer">qbancoffee/imac_g3_ivad_board_init</a> (LGPL-3.0). Bisel interior de <a href="https://github.com/anthony-bernaert/imac-g3-screen-bezel" target="_blank" rel="noopener noreferrer">Anthony Bernaert</a> (CC BY-NC 4.0, solo uso no comercial).</div>
+      <div>Traducción, pines verificados, PCB master y esta guía: <a href="https://jjaroll.dev" target="_blank" rel="noopener noreferrer">JJaroll.dev</a>, con ayuda de Claude (Anthropic). Hazlo bajo tu propia responsabilidad: el CRT puede retener alto voltaje.</div></footer>`;
   }
   function applyTheme() {
     const d = document.documentElement;
