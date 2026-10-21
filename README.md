@@ -1,5 +1,6 @@
 # MacBerry Pi G3 · en español
 
+[![Guía interactiva](https://img.shields.io/badge/gu%C3%ADa-interactiva-4397F8)](https://jjaroll.github.io/MacBerry-Pi/)
 [![Licencia: LGPL-3.0](https://img.shields.io/badge/licencia-LGPL--3.0-blue)](LICENSE)
 [![Bezel: CC BY-NC 4.0](https://img.shields.io/badge/stl%2Fbezel-CC%20BY--NC%204.0-lightgrey)](stl/bezel/LEEME.md)
 [![Hardware abierto](https://img.shields.io/badge/hardware-abierto-brightgreen)](hardware)
@@ -19,6 +20,10 @@ Este repositorio reúne **la documentación en español**, las **tres placas del
 > ⚠️ **Riesgo:** el CRT retiene carga aunque esté desenchufado, el bisel interior es muy frágil y la estática daña la electrónica. Hazlo bajo tu propia responsabilidad.
 
 ## Por dónde empezar
+
+**Recomendado:** abre la [**guía interactiva paso a paso**](https://jjaroll.github.io/MacBerry-Pi/) (plan personalizado, cables, jumpers, calibración, diagnóstico y descargas). Los archivos viven en `index.html` y `sitio/`.
+
+O lee los documentos:
 
 1. Lee la [**Guía de cableado con Raspberry Pi 5**](docs/guia_cableado_pi5.md) (pines verificados, jumpers, alimentación y pruebas) y, como contexto, la [guía completa de implementación](docs/guia_macberry_pi.md).
 2. Abre los visores de [`visores/`](visores) con doble clic para ver el montaje.

@@ -1,0 +1,270 @@
+/* =========================================================
+   DESIGN TOKENS — Sistema de diseño "Cicada" / Claude Diseño
+   -----------------------------------------------------------
+   v2 — M3-ificado. Mantiene los MISMOS nombres de variable que
+   ya consume template.html (--bg-app, --accent, --text-main...)
+   para no romper nada existente, pero ahora sus valores salen
+   de escalas tonales M3 (Grafito/Aluminio + 6 acentos reales),
+   y se agregan tokens NUEVOS de forma (shape), elevación,
+   tipografía y movimiento para nuevos componentes.
+
+   Cómo funciona (sin cambios):
+   - TEMA: atributo [data-theme] en <html> (dark/light).
+   - ACENTO: atributo [data-color] en <html> (blue/green/purple/
+     orange/pink/yellow — yellow es NUEVO en esta versión).
+   ========================================================= */
+
+/* -----------------------------------------
+   TEMA OSCURO (por defecto, sin atributo)
+   Compatibilidad: mismos nombres de variable de siempre.
+   ----------------------------------------- */
+:root {
+    --bg-app: #0E0F10;
+    --bg-main: #26272C;
+    --bg-card: #18181B;
+    --input-bg: #0E0F10;
+
+    /* Panel lateral: mantiene su propia identidad en ambos temas */
+    --bg-sidebar: #F3F3F4;
+
+    --btn-bg: rgba(255, 255, 255, 0.05);
+    --btn-hover: rgba(255, 255, 255, 0.1);
+
+    --text-main: #FBFBFB;
+    --text-muted: #B2B5BD;
+    --text-sidebar: #131416;
+    --text-sidebar-muted: #50535E;
+
+    --border-color: rgba(255, 255, 255, 0.1);
+
+    /* --- Roles M3 adicionales (nuevos, para componentes futuros) --- */
+    --m3-surface: #0E0F10;
+    --m3-surface-dim: #090A0B;
+    --m3-surface-container: #18181B;
+    --m3-surface-container-high: #1F2024;
+    --m3-surface-container-highest: #28292F;
+    --m3-on-surface: #E6E7EA;
+    --m3-on-surface-variant: #D3D5D9;
+    --m3-outline: #9095A2;
+    --m3-outline-variant: #3B3D45;
+    --m3-error: #F0BFBC;
+    --m3-on-error: #43110F;
+    --m3-error-container: #6A1A16;
+}
+
+/* -----------------------------------------
+   TEMA CLARO
+   ----------------------------------------- */
+[data-theme="light"] {
+    --bg-app: #E6E7EA;
+    --bg-main: #F0F0F2;
+    --bg-card: #FBFBFB;
+    --input-bg: #F8F8F9;
+
+    --btn-bg: rgba(0, 0, 0, 0.05);
+    --btn-hover: rgba(0, 0, 0, 0.1);
+
+    --text-main: #131416;
+    --text-muted: #3B3D45;
+
+    --border-color: rgba(0, 0, 0, 0.1);
+
+    --m3-surface: #F8F8F9;
+    --m3-surface-dim: #DEDFE3;
+    --m3-surface-container: #F0F0F2;
+    --m3-surface-container-high: #ECECEE;
+    --m3-surface-container-highest: #E6E7EA;
+    --m3-on-surface: #131416;
+    --m3-on-surface-variant: #3B3D45;
+    --m3-outline: #6E7382;
+    --m3-outline-variant: #D3D5D9;
+    --m3-error: #92221C;
+    --m3-on-error: #FFFFFF;
+    --m3-error-container: #F6DBDA;
+}
+
+/* -----------------------------------------
+   ACENTOS DE COLOR ("colección Nano" / selector real de la app)
+   Valores exactos muestreados del selector de acento en producción.
+   NUEVO: yellow (faltaba en la versión anterior).
+   Cada acento expone también su escala tonal completa (accent-<n>-<tono>)
+   para usos puntuales (gráficos, badges) fuera del rol 'primary'.
+   ----------------------------------------- */
+[data-color="blue"] { --accent: #4397F8; --accent-hover: #127CF6; --accent-light: #4397F826; }
+[data-color="green"] { --accent: #8AC63C; --accent-hover: #6FA02F; --accent-light: #8AC63C26; }
+[data-color="purple"] { --accent: #8032DA; --accent-hover: #6721B8; --accent-light: #8032DA26; }
+[data-color="orange"] { --accent: #F08E35; --accent-hover: #E17411; --accent-light: #F08E3526; }
+[data-color="pink"] { --accent: #D4416C; --accent-hover: #B82A53; --accent-light: #D4416C26; }
+[data-color="yellow"] { --accent: #F8D648; --accent-hover: #F6CB17; --accent-light: #F8D64826; }
+
+/* Escalas tonales completas por acento (para data-viz, badges, estados) */
+:root {
+/* blue */
+--accent-blue-10: #041325;
+--accent-blue-20: #07264B;
+--accent-blue-30: #093C76;
+--accent-blue-40: #0A51A3;
+--accent-blue-50: #0A70E6;
+--accent-blue-60: #3D92F5;
+--accent-blue-70: #7AB3F5;
+--accent-blue-80: #B4D4F8;
+--accent-blue-90: #D5E7FB;
+--accent-blue-95: #EAF3FD;
+/* green */
+--accent-green-10: #161E0B;
+--accent-green-20: #2B3D15;
+--accent-green-30: #44601F;
+--accent-green-40: #5D842A;
+--accent-green-50: #80B937;
+--accent-green-60: #A0CF63;
+--accent-green-70: #BCDC93;
+--accent-green-80: #D9EAC2;
+--accent-green-90: #E9F3DD;
+--accent-green-95: #F4F9EE;
+/* purple */
+--accent-purple-10: #140821;
+--accent-purple-20: #270F42;
+--accent-purple-30: #3D1769;
+--accent-purple-40: #531D90;
+--accent-purple-50: #7225CA;
+--accent-purple-60: #9454DE;
+--accent-purple-70: #B489E6;
+--accent-purple-80: #D4BDF0;
+--accent-purple-90: #E7DAF6;
+--accent-purple-95: #F3EDFA;
+/* orange */
+--accent-orange-10: #241405;
+--accent-orange-20: #482709;
+--accent-orange-30: #733D0D;
+--accent-orange-40: #9E5310;
+--accent-orange-50: #DE7311;
+--accent-orange-60: #EE9544;
+--accent-orange-70: #F1B57E;
+--accent-orange-80: #F6D5B7;
+--accent-orange-90: #F9E7D7;
+--accent-orange-95: #FCF3EB;
+/* pink */
+--accent-pink-10: #200910;
+--accent-pink-20: #40121F;
+--accent-pink-30: #651B30;
+--accent-pink-40: #8B2341;
+--accent-pink-50: #C32D59;
+--accent-pink-60: #D75B7F;
+--accent-pink-70: #E28EA6;
+--accent-pink-80: #EDBFCD;
+--accent-pink-90: #F5DBE3;
+--accent-pink-95: #FAEDF1;
+/* yellow */
+--accent-yellow-10: #251F04;
+--accent-yellow-20: #4B3E07;
+--accent-yellow-30: #766109;
+--accent-yellow-40: #A3860A;
+--accent-yellow-50: #E6BB0A;
+--accent-yellow-60: #F5D13D;
+--accent-yellow-70: #F5DE7A;
+--accent-yellow-80: #F8EBB4;
+--accent-yellow-90: #FBF3D5;
+--accent-yellow-95: #FDF9EA;
+}
+
+/* -----------------------------------------
+   TIPOGRAFÍA
+   - Outfit: texto general, títulos, display.
+   - JetBrains Mono: etiquetas en mayúsculas, datos, inputs.
+   Escala M3 disponible como tokens para nuevos componentes;
+   los tamaños ad-hoc existentes (text-[13px] etc.) se mantienen
+   funcionando igual, no es necesario migrarlos de una vez.
+   ----------------------------------------- */
+:root {
+    --font-body: "Outfit", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --type-display-lg-size: 57px;
+    --type-display-lg-line-height: 64px;
+    --type-display-lg-weight: 400;
+    --type-display-md-size: 45px;
+    --type-display-md-line-height: 52px;
+    --type-display-md-weight: 400;
+    --type-display-sm-size: 36px;
+    --type-display-sm-line-height: 44px;
+    --type-display-sm-weight: 400;
+    --type-headline-lg-size: 32px;
+    --type-headline-lg-line-height: 40px;
+    --type-headline-lg-weight: 400;
+    --type-headline-md-size: 28px;
+    --type-headline-md-line-height: 36px;
+    --type-headline-md-weight: 400;
+    --type-headline-sm-size: 24px;
+    --type-headline-sm-line-height: 32px;
+    --type-headline-sm-weight: 400;
+    --type-title-lg-size: 22px;
+    --type-title-lg-line-height: 28px;
+    --type-title-lg-weight: 500;
+    --type-title-md-size: 16px;
+    --type-title-md-line-height: 24px;
+    --type-title-md-weight: 500;
+    --type-title-sm-size: 14px;
+    --type-title-sm-line-height: 20px;
+    --type-title-sm-weight: 500;
+    --type-body-lg-size: 16px;
+    --type-body-lg-line-height: 24px;
+    --type-body-lg-weight: 400;
+    --type-body-md-size: 14px;
+    --type-body-md-line-height: 20px;
+    --type-body-md-weight: 400;
+    --type-body-sm-size: 12px;
+    --type-body-sm-line-height: 16px;
+    --type-body-sm-weight: 400;
+    --type-label-lg-size: 14px;
+    --type-label-lg-line-height: 20px;
+    --type-label-lg-weight: 500;
+    --type-label-md-size: 12px;
+    --type-label-md-line-height: 16px;
+    --type-label-md-weight: 500;
+    --type-label-sm-size: 11px;
+    --type-label-sm-line-height: 16px;
+    --type-label-sm-weight: 500;
+}
+
+/* -----------------------------------------
+   FORMA (shape) — escala M3. Los radios ad-hoc ya usados en el
+   template (16px en .glass-card, 20px en sidebar, etc.) son
+   coherentes con esta escala; se deja explícita para lo nuevo.
+   ----------------------------------------- */
+:root {
+    --shape-none: 0px;
+    --shape-xs: 4px;
+    --shape-sm: 8px;
+    --shape-md: 12px;
+    --shape-lg: 16px;   /* = radio actual de .glass-card */
+    --shape-xl: 20px;   /* = radio actual del sidebar */
+    --shape-xxl: 28px;
+    --shape-full: 999px;
+}
+
+/* -----------------------------------------
+   ELEVACIÓN — nueva. El look actual usa 'glass' (blur + borde),
+   que es una decisión de identidad válida y se mantiene por
+   defecto en .glass-card. Estas clases .m3-elevation-N ofrecen
+   la alternativa M3 clásica (sombra + tinte de superficie) para
+   componentes nuevos donde el efecto vidrio no encaje (menús,
+   tooltips, FAB, dropdowns).
+   ----------------------------------------- */
+.m3-elevation-0 { box-shadow: none; }
+.m3-elevation-1 { box-shadow: 0 1px 2px rgba(0,0,0,.15); background: var(--m3-surface-container); }
+.m3-elevation-2 { box-shadow: 0 1px 3px rgba(0,0,0,.20); background: var(--m3-surface-container-high); }
+.m3-elevation-3 { box-shadow: 0 4px 8px rgba(0,0,0,.20); background: var(--m3-surface-container-high); }
+.m3-elevation-4 { box-shadow: 0 6px 10px rgba(0,0,0,.22); background: var(--m3-surface-container-highest); }
+.m3-elevation-5 { box-shadow: 0 8px 12px rgba(0,0,0,.25); background: var(--m3-surface-container-highest); }
+
+/* -----------------------------------------
+   MOVIMIENTO — nuevo. Las transiciones ad-hoc existentes (0.2s)
+   equivalen aprox. a --motion-short; se explicitan para futuro.
+   ----------------------------------------- */
+:root {
+    --motion-short: 150ms;
+    --motion-medium: 300ms;
+    --motion-long: 500ms;
+    --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+    --motion-easing-emphasized: cubic-bezier(0.05, 0.7, 0.1, 1);
+}
